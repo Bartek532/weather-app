@@ -2,12 +2,13 @@ import { ReactComponent as SearchIcon } from "../assets/icons/defaultSearchIcon.
 import { ReactComponent as LocationSearchIcon } from "../assets/icons/locationSearchIcon.svg";
 import { ChangeEvent, useState } from "react";
 
-import { getCurrentWeather } from "../utils";
+import { getCurrentWeather, getDailyWeather } from "../utils";
 
 export const SearchControls = () => {
   const [query, setQuery] = useState("");
   const handleSearch = async () => {
-    console.log(await getCurrentWeather(query));
+    const { coord } = await getCurrentWeather(query);
+    console.log(await getDailyWeather(coord.lat, coord.lon));
   };
 
   const handleQueryUpdate = (e: ChangeEvent<HTMLInputElement>) => {

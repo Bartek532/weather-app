@@ -1,48 +1,51 @@
 import * as React from "react";
-import { useState, createContext } from "react";
+import { useState, createContext, Dispatch, SetStateAction } from "react";
+import { CurrentWeatherType, DailyWeatherType } from "../types";
 
-export const Compo = () => {
-  return <div></div>;
-};
-/*
-export const ContactsContext = createContext<ContactsContextType>(
-  {} as ContactsContextType
+export const WeatherContext = createContext<WeatherContextType>(
+  {} as WeatherContextType
 );
 
-type User = {
-  name: string;
-  age: number;
-};
-
-type ContactsContextType = {
-  contacts: User[];
-  setContacts: React.Dispatch<React.SetStateAction<User[]>>;
+type WeatherContextType = {
+  currentWeather: CurrentWeatherType;
+  dailyWeather: DailyWeatherType;
+  loading: boolean;
+  error: string;
+  setCurrentWeather: Dispatch<SetStateAction<CurrentWeatherType>>;
+  setDailyWeather: Dispatch<SetStateAction<DailyWeatherType>>;
+  setLoading: Dispatch<SetStateAction<boolean>>;
+  setError: Dispatch<SetStateAction<string>>;
 };
 
 type Props = {
   children: React.ReactNode;
 };
 
-export const ContactsProvider = (props: Props) => {
-  const [contacts, setContacts] = useState<User[]>([
-    {
-      name: "John",
-      age: 20
-    },
-    {
-      name: "Terry",
-      age: 45
-    },
-    {
-      name: "Bob",
-      age: 67
-    }
-  ]);
+export const WeatherProvider = (props: Props) => {
+  const [currentWeather, setCurrentWeather] = useState<CurrentWeatherType>(
+    {} as CurrentWeatherType
+  );
+  const [dailyWeather, setDailyWeather] = useState<DailyWeatherType>(
+    {} as DailyWeatherType
+  );
+
+  const [loading, setLoading] = useState(false);
+  const [error, setError] = useState("");
 
   return (
-    <ContactsContext.Provider value={{ contacts, setContacts }}>
+    <WeatherContext.Provider
+      value={{
+        currentWeather,
+        setCurrentWeather,
+        dailyWeather,
+        setDailyWeather,
+        loading,
+        setLoading,
+        error,
+        setError
+      }}
+    >
       {props.children}
-    </ContactsContext.Provider>
+    </WeatherContext.Provider>
   );
 };
-*/
