@@ -1,14 +1,34 @@
 import { ReactComponent as SearchIcon } from "../assets/icons/defaultSearchIcon.svg";
 import { ReactComponent as LocationSearchIcon } from "../assets/icons/locationSearchIcon.svg";
-import { ChangeEvent, useState } from "react";
+import { ChangeEvent, useState, useContext } from "react";
+import { WeatherContext } from "./WeatherContext";
 
 import { getCurrentWeather, getDailyWeather } from "../utils";
 
 export const SearchControls = () => {
   const [query, setQuery] = useState("");
-  const handleSearch = async () => {
-    const { coord } = await getCurrentWeather(query);
-    console.log(await getDailyWeather(coord.lat, coord.lon));
+  const {
+    setLoading,
+    setError,
+    setCurrentWeather,
+    setDailyWeather
+  } = useContext(WeatherContext);
+
+  const search = async () => {
+    setLoading(true);
+    try {
+      const currentWeather = await getCurrentWeather(query);
+      setCurrentWeather(currentWeather);
+
+      const { coord } = currentWeather;
+      setDailyWeather(await getDailyWeather(coord.lat, coord.lon));
+
+      setError("");
+    } catch {
+      setError("Niestety, nie znaleziono tego czego szukasz");
+    } finally {
+      setLoading(false);
+    }
   };
 
   const handleQueryUpdate = (e: ChangeEvent<HTMLInputElement>) => {
@@ -19,7 +39,7 @@ export const SearchControls = () => {
     e: React.KeyboardEvent<HTMLInputElement>
   ) => {
     if (e.key === "Enter") {
-      console.log(await getCurrentWeather(query));
+      return search();
     }
 
     return;
@@ -34,7 +54,7 @@ export const SearchControls = () => {
         onChange={handleQueryUpdate}
         onKeyDown={handleSearchByEnter}
       />
-      <button className="search__btn--default" onClick={handleSearch}>
+      <button className="search__btn--default" onClick={search}>
         <SearchIcon />
       </button>
       <button className="search__btn--location">
