@@ -1,6 +1,6 @@
 import { ReactComponent as SearchIcon } from "../assets/icons/defaultSearchIcon.svg";
 import { ReactComponent as LocationSearchIcon } from "../assets/icons/locationSearchIcon.svg";
-import { ChangeEvent, useState, useContext } from "react";
+import { ChangeEvent, useState, useContext, useEffect } from "react";
 import { WeatherContext } from "./WeatherContext";
 
 import { getCurrentWeather, getDailyWeather } from "../utils";
@@ -14,22 +14,29 @@ export const SearchControls = () => {
     setDailyWeather
   } = useContext(WeatherContext);
 
-  const search = async () => {
+  const search = async (city: string) => {
     setLoading(true);
     try {
-      const currentWeather = await getCurrentWeather(query);
+      const currentWeather = await getCurrentWeather(city);
       setCurrentWeather(currentWeather);
 
       const { coord } = currentWeather;
       setDailyWeather(await getDailyWeather(coord.lat, coord.lon));
 
-      setError("");
+      setError(false);
     } catch {
-      setError("Niestety, nie znaleziono tego czego szukasz");
-    } finally {
-      setLoading(false);
+      setError(true);
     }
+    setLoading(false);
   };
+
+  useEffect(() => {
+    async function searchFirstTime() {
+      return await search("London");
+    }
+
+    searchFirstTime();
+  }, []);
 
   const handleQueryUpdate = (e: ChangeEvent<HTMLInputElement>) => {
     setQuery(e.target.value);
@@ -39,7 +46,7 @@ export const SearchControls = () => {
     e: React.KeyboardEvent<HTMLInputElement>
   ) => {
     if (e.key === "Enter") {
-      return search();
+      return search(query);
     }
 
     return;
@@ -54,7 +61,7 @@ export const SearchControls = () => {
         onChange={handleQueryUpdate}
         onKeyDown={handleSearchByEnter}
       />
-      <button className="search__btn--default" onClick={search}>
+      <button className="search__btn--default" onClick={() => search(query)}>
         <SearchIcon />
       </button>
       <button className="search__btn--location">

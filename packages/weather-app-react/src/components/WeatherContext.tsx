@@ -10,11 +10,11 @@ type WeatherContextType = {
   currentWeather: CurrentWeatherType;
   dailyWeather: DailyWeatherType;
   loading: boolean;
-  error: string;
+  error: boolean;
   setCurrentWeather: Dispatch<SetStateAction<CurrentWeatherType>>;
   setDailyWeather: Dispatch<SetStateAction<DailyWeatherType>>;
   setLoading: Dispatch<SetStateAction<boolean>>;
-  setError: Dispatch<SetStateAction<string>>;
+  setError: Dispatch<SetStateAction<boolean>>;
 };
 
 type Props = {
@@ -29,8 +29,8 @@ export const WeatherProvider = (props: Props) => {
     {} as DailyWeatherType
   );
 
-  const [loading, setLoading] = useState(false);
-  const [error, setError] = useState("");
+  const [loading, setLoading] = useState(true);
+  const [error, setError] = useState(false);
 
   return (
     <WeatherContext.Provider
