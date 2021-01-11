@@ -24,3 +24,10 @@ export const getTimezone = async (latitude: number, longitude: number) => {
 
   return data;
 };
+
+export const importIcon = async (iconCode: string) => {
+  const item: { default: string } = await import(
+    `./assets/icons/weather/${iconCode}.svg`
+  );
+  return item.default;
+};

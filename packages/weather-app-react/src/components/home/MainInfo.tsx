@@ -1,4 +1,5 @@
 import { useEffect, useState } from "react";
+import { importIcon } from "../../utils";
 
 export const MainInfo = ({
   iconCode,
@@ -11,14 +12,11 @@ export const MainInfo = ({
 }) => {
   const [icon, setIcon] = useState("");
   useEffect(() => {
-    async function loadIcon() {
-      const item: { default: string } = await import(
-        `../../assets/icons/weather/${iconCode}.svg`
-      );
-      setIcon(item.default);
+    async function getIcon() {
+      setIcon(await importIcon(iconCode));
     }
 
-    loadIcon();
+    getIcon();
   }, [iconCode]);
 
   return (
