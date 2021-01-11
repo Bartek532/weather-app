@@ -9,6 +9,7 @@ export const Home = () => {
   const { currentWeather, dailyWeather, loading } = useContext(WeatherContext);
 
   if (!loading) {
+    console.log(dailyWeather);
     return (
       <div className="home">
         <MainInfo

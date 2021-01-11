@@ -25,9 +25,12 @@ export const getTimezone = async (latitude: number, longitude: number) => {
   return data;
 };
 
-export const importIcon = async (iconCode: string) => {
-  const item: { default: string } = await import(
-    `./assets/icons/weather/${iconCode}.svg`
-  );
-  return item.default;
+export const calculateHour = (actualTime: number, shift: number) => {
+  const shiftedTime = actualTime + shift;
+
+  if (shiftedTime > 23) {
+    return shiftedTime - 24;
+  }
+
+  return shiftedTime;
 };
