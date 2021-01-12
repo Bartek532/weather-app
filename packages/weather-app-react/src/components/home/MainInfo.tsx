@@ -1,3 +1,5 @@
+import { calculateTemp } from "../../utils";
+
 export const MainInfo = ({
   iconCode,
   temperature,
@@ -14,7 +16,7 @@ export const MainInfo = ({
         src={require(`../../assets/icons/weather/${iconCode}.svg`).default}
         alt="weather-icon"
       />
-      <span>{temperature.toFixed(1)} C</span>
+      <span>{calculateTemp(temperature, 1)} C</span>
       <span>{place}</span>
     </div>
   );

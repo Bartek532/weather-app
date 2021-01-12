@@ -34,3 +34,7 @@ export const calculateHour = (actualTime: number, shift: number) => {
 
   return shiftedTime;
 };
+
+export const calculateTemp = (temp: number, comma: number) => {
+  return (temp - 273.5).toFixed(comma);
+};

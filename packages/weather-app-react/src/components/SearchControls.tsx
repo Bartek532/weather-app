@@ -1,9 +1,9 @@
-import { ReactComponent as SearchIcon } from "../assets/icons/defaultSearchIcon.svg";
-import { ReactComponent as LocationSearchIcon } from "../assets/icons/locationSearchIcon.svg";
+import { ReactComponent as SearchIcon } from "../assets/icons/defaultSearch.svg";
+import { ReactComponent as LocationSearchIcon } from "../assets/icons/locationSearch.svg";
 import { ChangeEvent, useState, useContext, useEffect } from "react";
 import { WeatherContext } from "./WeatherContext";
 
-import { getCurrentWeather, getDailyWeather } from "../utils";
+import { getCurrentWeather, getDailyWeather, getTimezone } from "../utils";
 
 export const SearchControls = () => {
   const [query, setQuery] = useState("");
@@ -11,7 +11,8 @@ export const SearchControls = () => {
     setLoading,
     setError,
     setCurrentWeather,
-    setDailyWeather
+    setDailyWeather,
+    setTimezone
   } = useContext(WeatherContext);
 
   const search = async (city: string) => {
@@ -22,6 +23,12 @@ export const SearchControls = () => {
 
       const { coord } = currentWeather;
       setDailyWeather(await getDailyWeather(coord.lat, coord.lon));
+
+      const { countryName, formatted } = await getTimezone(
+        coord.lat,
+        coord.lon
+      );
+      setTimezone({ countryName, hour: Number(formatted.substring(11, 13)) });
 
       setError(false);
     } catch {

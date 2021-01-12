@@ -1,24 +1,23 @@
-import { BasicWeatherInfo } from "../../types";
+import { BasicWeatherInfo, Timezone } from "../../types";
 import { useState } from "react";
 import { calculateHour } from "../../utils";
 import { HourlyWeatherItem } from "./HourlyWeatherItem";
 
-const currentTime = 17;
-
 export const HourlyWeatherToday = ({
-  data
+  weather,
+  time
 }: {
-  data: Partial<BasicWeatherInfo>[];
+  weather: Partial<BasicWeatherInfo>[];
+  time: Timezone;
 }) => {
   return (
     <div className="hourly__weather__today">
-      {data.map((item, index) => {
-        if (index < 3) {
-          console.log(index);
+      {weather.map((item, index) => {
+        if (index < 4 && index > 0) {
           return (
             <HourlyWeatherItem
               key={item.dt}
-              time={calculateHour(currentTime, index + 1)}
+              time={calculateHour(time.hour, index)}
               temp={item!.temp!}
               icon={item!.weather![0].icon}
             />
@@ -32,25 +31,26 @@ export const HourlyWeatherToday = ({
 };
 
 export const HourlyWeatherTomorrow = ({
-  data
+  weather,
+  time
 }: {
-  data: Partial<BasicWeatherInfo>[];
+  weather: Partial<BasicWeatherInfo>[];
+  time: Timezone;
 }) => {
-  console.log(data);
   return (
     <div className="hourly__weather__tomorrow">
-      {data.map((item, index) => {
+      {weather.map((item, index) => {
         if (
           [
-            24 - currentTime + 9,
-            24 - currentTime + 13,
-            24 - currentTime + 17
+            24 - time.hour + 9,
+            24 - time.hour + 13,
+            24 - time.hour + 17
           ].includes(index)
         ) {
           return (
             <HourlyWeatherItem
               key={item.dt}
-              time={calculateHour(currentTime, index + 1)}
+              time={calculateHour(time.hour, index + 1)}
               temp={item!.temp!}
               icon={item!.weather![0].icon}
             />
@@ -64,9 +64,11 @@ export const HourlyWeatherTomorrow = ({
 };
 
 export const HourlyWeather = ({
-  data
+  weather,
+  time
 }: {
-  data: Partial<BasicWeatherInfo>[];
+  weather: Partial<BasicWeatherInfo>[];
+  time: Timezone;
 }) => {
   const [isTodayActive, setIsTodayActive] = useState(true);
   return (
@@ -90,9 +92,9 @@ export const HourlyWeather = ({
         </span>
       </div>
       {isTodayActive ? (
-        <HourlyWeatherToday data={data} />
+        <HourlyWeatherToday weather={weather} time={time} />
       ) : (
-        <HourlyWeatherTomorrow data={data} />
+        <HourlyWeatherTomorrow weather={weather} time={time} />
       )}
     </div>
   );

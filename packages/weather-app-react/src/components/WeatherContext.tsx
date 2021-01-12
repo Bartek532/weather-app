@@ -1,6 +1,6 @@
 import * as React from "react";
 import { useState, createContext, Dispatch, SetStateAction } from "react";
-import { CurrentWeatherType, DailyWeatherType } from "../types";
+import { CurrentWeatherType, DailyWeatherType, Timezone } from "../types";
 
 export const WeatherContext = createContext<WeatherContextType>(
   {} as WeatherContextType
@@ -9,10 +9,12 @@ export const WeatherContext = createContext<WeatherContextType>(
 type WeatherContextType = {
   currentWeather: CurrentWeatherType;
   dailyWeather: DailyWeatherType;
+  timezone: Timezone;
   loading: boolean;
   error: boolean;
   setCurrentWeather: Dispatch<SetStateAction<CurrentWeatherType>>;
   setDailyWeather: Dispatch<SetStateAction<DailyWeatherType>>;
+  setTimezone: Dispatch<SetStateAction<Timezone>>;
   setLoading: Dispatch<SetStateAction<boolean>>;
   setError: Dispatch<SetStateAction<boolean>>;
 };
@@ -29,6 +31,8 @@ export const WeatherProvider = (props: Props) => {
     {} as DailyWeatherType
   );
 
+  const [timezone, setTimezone] = useState<Timezone>({} as Timezone);
+
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(false);
 
@@ -39,6 +43,8 @@ export const WeatherProvider = (props: Props) => {
         setCurrentWeather,
         dailyWeather,
         setDailyWeather,
+        timezone,
+        setTimezone,
         loading,
         setLoading,
         error,

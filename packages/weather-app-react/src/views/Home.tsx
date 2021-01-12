@@ -6,10 +6,11 @@ import { HourlyWeather } from "../components/home/HourlyWeather";
 import { WeatherContext } from "../components/WeatherContext";
 
 export const Home = () => {
-  const { currentWeather, dailyWeather, loading } = useContext(WeatherContext);
+  const { currentWeather, dailyWeather, timezone, loading } = useContext(
+    WeatherContext
+  );
 
   if (!loading) {
-    console.log(dailyWeather);
     return (
       <div className="home">
         <MainInfo
@@ -17,7 +18,7 @@ export const Home = () => {
           place={currentWeather.name}
           temperature={currentWeather.main.temp}
         />
-        <HourlyWeather data={dailyWeather.hourly} />
+        <HourlyWeather weather={dailyWeather.hourly} time={timezone} />
         <AdditionalInfo
           cloudiness={currentWeather.clouds.all}
           pressure={currentWeather.main.pressure}

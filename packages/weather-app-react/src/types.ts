@@ -97,3 +97,8 @@ export type DailyWeatherType = {
   timezone: string;
   timezone_offset: number;
 };
+
+export type Timezone = {
+  countryName: string;
+  hour: number;
+};
