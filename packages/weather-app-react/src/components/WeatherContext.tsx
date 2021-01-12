@@ -12,11 +12,13 @@ type WeatherContextType = {
   timezone: Timezone;
   loading: boolean;
   error: boolean;
+  dailyActiveDayIndex: number;
   setCurrentWeather: Dispatch<SetStateAction<CurrentWeatherType>>;
   setDailyWeather: Dispatch<SetStateAction<DailyWeatherType>>;
   setTimezone: Dispatch<SetStateAction<Timezone>>;
   setLoading: Dispatch<SetStateAction<boolean>>;
   setError: Dispatch<SetStateAction<boolean>>;
+  setDailyActiveDayIndex: Dispatch<SetStateAction<number>>;
 };
 
 type Props = {
@@ -35,6 +37,7 @@ export const WeatherProvider = (props: Props) => {
 
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(false);
+  const [dailyActiveDayIndex, setDailyActiveDayIndex] = useState(0);
 
   return (
     <WeatherContext.Provider
@@ -48,7 +51,9 @@ export const WeatherProvider = (props: Props) => {
         loading,
         setLoading,
         error,
-        setError
+        setError,
+        dailyActiveDayIndex,
+        setDailyActiveDayIndex
       }}
     >
       {props.children}

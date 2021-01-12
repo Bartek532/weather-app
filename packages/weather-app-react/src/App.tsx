@@ -7,7 +7,10 @@ import { Loader } from "./components/Loader";
 import { Navbar } from "./components/Navbar";
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 
+import { getListOfDays } from "./utils";
+
 function App() {
+  console.log(getListOfDays());
   return (
     <WeatherProvider>
       <SearchControls />

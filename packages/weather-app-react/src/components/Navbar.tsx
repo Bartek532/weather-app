@@ -11,7 +11,7 @@ export const Navbar = () => {
         </div>
         <span className="link__text">Home</span>
       </NavLink>
-      <NavLink to="/about" className="link" activeClassName="link--active">
+      <NavLink to="/daily" className="link" activeClassName="link--active">
         <span className="link__text">Daily</span>
         <div className="link__icon">
           <CalendarIcon />

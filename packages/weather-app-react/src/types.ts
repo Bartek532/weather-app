@@ -9,6 +9,7 @@ export type Wind = {
 };
 
 export type Temperature = {
+  morn: number;
   day: number;
   min: number;
   max: number;

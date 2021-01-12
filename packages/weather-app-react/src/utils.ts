@@ -38,3 +38,22 @@ export const calculateHour = (actualTime: number, shift: number) => {
 export const calculateTemp = (temp: number, comma: number) => {
   return (temp - 273.5).toFixed(comma);
 };
+
+export const getListOfDays = () => {
+  const days = [
+    "Sunday",
+    "Monday",
+    "Tuesday",
+    "Wednesday",
+    "Thursday",
+    "Friday",
+    "Saturday"
+  ];
+  const today = new Date();
+  const listOfDays = [];
+  for (let i = today.getDay(); i < today.getDay() + 7; i++) {
+    i > 6 ? listOfDays.push(days[i - 7]) : listOfDays.push(days[i]);
+  }
+
+  return listOfDays;
+};
