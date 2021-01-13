@@ -1,5 +1,4 @@
 import { calculateTemp } from "../../utils";
-import styles from "../../assets/styles/home/MainInfo.module.scss";
 
 export const MainInfo = ({
   iconCode,
@@ -13,17 +12,17 @@ export const MainInfo = ({
   country: string;
 }) => {
   return (
-    <div className={styles.mainInfo}>
-      <h1 className={styles["mainInfo__title"]}>Weather forecast</h1>
+    <div className="main-info">
+      <h1 className="main-info__title">Weather forecast</h1>
       <img
         src={require(`../../assets/icons/weather/${iconCode}.svg`).default}
         alt="weather-icon"
-        className={styles["mainInfo__icon"]}
+        className="main-info__icon"
       />
-      <span className={styles["mainInfo__temp"]}>
+      <span className="main-info__temp">
         {calculateTemp(temperature, 1)} <sup>°</sup>
       </span>
-      <span className={styles["mainInfo__place"]}>
+      <span className="main-info__place">
         {city}, {country}
       </span>
     </div>

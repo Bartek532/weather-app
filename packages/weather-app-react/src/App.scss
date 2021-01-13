@@ -1,4 +1,11 @@
 @import url("https://fonts.googleapis.com/css?family=Didact+Gothic&display=swap");
+@import "./assets/styles/Navbar";
+@import "./assets/styles/Search";
+@import "./assets/styles/home/MainInfo";
+@import "./assets/styles/home/AdditionalInfo";
+@import "./assets/styles/home/HourlyWeather";
+@import "./assets/styles/home/HourlyWeatherItem";
+@import "./assets/styles/daily/MainInfo";
 
 body {
   padding: 0;
