@@ -13,7 +13,7 @@ body {
   min-height: 100vh;
   overflow-x: hidden;
   font-family: "Didact Gothic", sans-serif;
-  background-color: #ebedf1;
+  background-color: #fff;
 }
 
 * {
@@ -23,4 +23,15 @@ body {
 
 .hourly__navbar__item--active {
   font-weight: bold;
+}
+
+#root::after {
+  z-index: -5;
+  content: "";
+  position: absolute;
+  width: 0;
+  height: 0;
+  border-top: 90vh solid #ebedf1;
+  border-right: 100vw solid transparent;
+  top: 0;
 }

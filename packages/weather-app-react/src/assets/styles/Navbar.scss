@@ -22,11 +22,11 @@ nav {
     }
 
     &--active {
-      .wrapper__link__icon path {
+      .link__icon path {
         fill: #000;
       }
 
-      .wrapper__link__text {
+      .link__text {
         color: #000;
       }
     }

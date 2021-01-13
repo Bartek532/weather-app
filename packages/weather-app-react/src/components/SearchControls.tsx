@@ -12,7 +12,8 @@ export const SearchControls = () => {
     setError,
     setCurrentWeather,
     setDailyWeather,
-    setTimezone
+    setTimezone,
+    setDailyActiveDayIndex
   } = useContext(WeatherContext);
 
   const search = async (city: string) => {
@@ -31,6 +32,7 @@ export const SearchControls = () => {
       setTimezone({ countryName, hour: Number(formatted.substring(11, 13)) });
 
       setError(false);
+      setDailyActiveDayIndex(0);
     } catch {
       setError(true);
     }

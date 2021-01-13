@@ -10,7 +10,6 @@ import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 import { getListOfDays } from "./utils";
 
 function App() {
-  console.log(getListOfDays());
   return (
     <WeatherProvider>
       <SearchControls />
