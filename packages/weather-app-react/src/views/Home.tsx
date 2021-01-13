@@ -15,7 +15,8 @@ export const Home = () => {
       <div className="home">
         <MainInfo
           iconCode={currentWeather.weather[0].icon}
-          place={currentWeather.name}
+          city={currentWeather.name}
+          country={timezone.countryName}
           temperature={currentWeather.main.temp}
         />
         <HourlyWeather weather={dailyWeather.hourly} time={timezone} />

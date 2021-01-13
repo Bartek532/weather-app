@@ -1,4 +1,4 @@
-import "./App.css";
+import "./App.scss";
 import { SearchControls } from "./components/SearchControls";
 import { WeatherProvider } from "./components/WeatherContext";
 import { Home } from "./views/Home";

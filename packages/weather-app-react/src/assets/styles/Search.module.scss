@@ -1,0 +1,101 @@
+.wrapper {
+  position: relative;
+  top: 0;
+  left: 0;
+  text-align: center;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 20px;
+
+  &__input {
+    background: transparent;
+    padding: 10px;
+    font-size: 1rem;
+    border: 0 none;
+    border-bottom: 2px solid #000;
+    width: 60vw;
+    max-width: 400px;
+    outline: 0 none;
+    margin-right: 20px;
+
+    &:focus {
+      box-shadow: 0 3px 3px -1px gray;
+      transition: 0.3s;
+    }
+  }
+
+  &__btn {
+    cursor: pointer;
+    padding: 10px;
+    border: 0 none;
+    font-weight: bold;
+    font-size: 1.3em;
+    background-color: transparent;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    svg {
+      width: 31px;
+      height: 31px;
+    }
+  }
+}
+
+/*
+
+.input-box {
+    position: relative;
+    top: 0;
+    left: 0;
+    text-align: center;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 20px;
+    margin-bottom: 40px;
+  
+    .search-btn {
+      cursor: pointer;
+      padding: 10px;
+      border: 0 none;
+      font-weight: bold;
+      font-size: 1.3em;
+      outline: 0 none;
+      background: transparent;
+    }
+  
+    .loc-btn {
+      cursor: pointer;
+      font-size: 1.3em;
+      padding: 10px;
+      border: 0 none;
+      outline: 0 none;
+      background: transparent;
+    }
+  
+    .search-box {
+      background: transparent;
+      padding: 10px;
+      font-size: 1em;
+      border: 0 none;
+      border-bottom: 2px solid #000;
+      width: 60vw;
+      outline: 0 none;
+      margin-right: 20px;
+  
+      &:focus {
+        box-shadow: 0 3px 3px -1px gray;
+        transition: 0.3s;
+      }
+    }
+  
+    .search-btn:focus,
+    .loc-btn:focus {
+      opacity: 0.5;
+      transition: 0.2s;
+    }
+  }
+
+  */

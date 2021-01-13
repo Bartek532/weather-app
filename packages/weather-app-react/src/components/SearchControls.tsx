@@ -2,6 +2,7 @@ import { ReactComponent as SearchIcon } from "../assets/icons/defaultSearch.svg"
 import { ReactComponent as LocationSearchIcon } from "../assets/icons/locationSearch.svg";
 import { ChangeEvent, useState, useContext, useEffect } from "react";
 import { WeatherContext } from "./WeatherContext";
+import styles from "../assets/styles/Search.module.scss";
 
 import { getCurrentWeather, getDailyWeather, getTimezone } from "../utils";
 
@@ -60,18 +61,24 @@ export const SearchControls = () => {
   };
 
   return (
-    <div className="search">
+    <div className={styles.wrapper}>
       <input
         type="text"
-        className="search__input"
+        placeholder="Search city"
+        className={styles["wrapper__input"]}
         value={query}
         onChange={handleQueryUpdate}
         onKeyDown={handleSearchByEnter}
       />
-      <button className="search__btn--default" onClick={() => search(query)}>
+      <button
+        className={`${styles["wrapper__btn--default"]} ${styles["wrapper__btn"]}`}
+        onClick={() => search(query)}
+      >
         <SearchIcon />
       </button>
-      <button className="search__btn--location">
+      <button
+        className={`${styles["wrapper__btn--location"]} ${styles["wrapper__btn"]}`}
+      >
         <LocationSearchIcon />
       </button>
     </div>

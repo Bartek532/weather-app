@@ -3,11 +3,13 @@ import { calculateTemp } from "../../utils";
 export const MainInfo = ({
   iconCode,
   temperature,
-  place
+  city,
+  country
 }: {
   iconCode: string;
   temperature: number;
-  place: string;
+  city: string;
+  country: string;
 }) => {
   return (
     <div>
@@ -17,7 +19,9 @@ export const MainInfo = ({
         alt="weather-icon"
       />
       <span>{calculateTemp(temperature, 1)} C</span>
-      <span>{place}</span>
+      <span>
+        {city}, {country}
+      </span>
     </div>
   );
 };
