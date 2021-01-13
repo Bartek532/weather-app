@@ -2,6 +2,7 @@ import { BasicWeatherInfo, Timezone } from "../../types";
 import { useState } from "react";
 import { calculateHour } from "../../utils";
 import { HourlyWeatherItem } from "./HourlyWeatherItem";
+import styles from "../../assets/styles/home/HourlyWeather.module.scss";
 
 export const HourlyWeatherToday = ({
   weather,
@@ -11,7 +12,7 @@ export const HourlyWeatherToday = ({
   time: Timezone;
 }) => {
   return (
-    <div className="hourly__weather__today">
+    <div className={styles["hourly__weather__items"]}>
       {weather.map((item, index) => {
         if (index < 4 && index > 0) {
           return (
@@ -38,7 +39,7 @@ export const HourlyWeatherTomorrow = ({
   time: Timezone;
 }) => {
   return (
-    <div className="hourly__weather__tomorrow">
+    <div className={styles["hourly__weather__items"]}>
       {weather.map((item, index) => {
         if (
           [
@@ -72,19 +73,19 @@ export const HourlyWeather = ({
 }) => {
   const [isTodayActive, setIsTodayActive] = useState(true);
   return (
-    <div className="hourly">
-      <div className="hourly__navbar">
+    <div className={styles.hourly}>
+      <div className={styles["hourly__navbar"]}>
         <span
-          className={`hourly__navbar__item__today ${
-            isTodayActive && "hourly__navbar__item--active"
+          className={`${styles["hourly__navbar__item"]} ${
+            isTodayActive && styles["hourly__navbar__item--active"]
           }`}
           onClick={() => setIsTodayActive(true)}
         >
           Today
         </span>
         <span
-          className={`hourly__navbar__item__tomorrow ${
-            !isTodayActive && "hourly__navbar__item--active"
+          className={`${styles["hourly__navbar__item"]} ${
+            !isTodayActive && styles["hourly__navbar__item--active"]
           }`}
           onClick={() => setIsTodayActive(false)}
         >

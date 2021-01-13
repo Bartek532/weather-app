@@ -1,0 +1,23 @@
+.hourly {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-flow: column wrap;
+  margin: 20px 0;
+
+  &__navbar__item {
+    padding: 0 10px;
+    font-weight: bold;
+    color: #9ca3ad;
+
+    &--active {
+      color: #000;
+    }
+  }
+
+  &__weather__items {
+    display: flex;
+    margin: 12px 0;
+  }
+}
