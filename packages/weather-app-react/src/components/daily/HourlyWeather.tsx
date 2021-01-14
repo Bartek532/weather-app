@@ -7,7 +7,7 @@ export const HourlyWeather = ({
 }) => {
   const startHour = 8;
   return (
-    <div>
+    <div className="daily__hourly-weather">
       {Object.values(temp).map((item, index) => (
         <HourlyWeatherItem
           temp={Number(item)}

@@ -5,7 +5,9 @@ import { useContext } from "react";
 import { WeatherContext } from "../WeatherContext";
 
 export const DaysList = ({ weather }: { weather: DailyWeatherItem[] }) => {
-  const { setDailyActiveDayIndex } = useContext(WeatherContext);
+  const { setDailyActiveDayIndex, dailyActiveDayIndex } = useContext(
+    WeatherContext
+  );
 
   const handleDayChange = (day: string) => {
     setDailyActiveDayIndex(getListOfDays().findIndex(item => item === day));
@@ -21,6 +23,7 @@ export const DaysList = ({ weather }: { weather: DailyWeatherItem[] }) => {
               day={getListOfDays()[index]}
               key={item.dt}
               changeDay={handleDayChange}
+              isActive={index === dailyActiveDayIndex}
             />
           );
         }

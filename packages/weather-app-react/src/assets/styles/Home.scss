@@ -1,0 +1,146 @@
+.main-info {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-flow: column wrap;
+  padding: 30px 0;
+
+  &__title {
+    font-size: 1rem;
+    margin-bottom: 15px;
+  }
+
+  &__icon {
+    margin: 10px;
+    width: 100px;
+    height: 100px;
+    margin-bottom: 0;
+  }
+
+  &__temp {
+    font-size: 3em;
+    font-weight: bold;
+
+    sup {
+      font-size: 1.5rem;
+    }
+  }
+
+  &__place {
+    color: #9ca3ad;
+  }
+}
+
+.hourly {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-flow: column wrap;
+  margin: 20px 0;
+
+  &__navbar__item {
+    padding: 0 10px;
+    font-weight: bold;
+    color: #9ca3ad;
+
+    &--active {
+      color: #000;
+    }
+  }
+
+  &__weather {
+    display: flex;
+    margin: 12px 0;
+  }
+}
+
+.hourly__weather__item {
+  height: 180px;
+  width: 85px;
+  margin: 10px;
+  border-radius: 20px;
+  position: relative;
+  overflow: hidden;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-flow: column wrap;
+  z-index: -2;
+  color: #fff;
+  font-weight: bold;
+
+  &::after {
+    position: absolute;
+    content: "";
+    width: 100%;
+    z-index: -1;
+  }
+
+  &:first-child {
+    background: #f59518;
+  }
+
+  &:first-child::after {
+    height: 100%;
+    top: 50%;
+    background: #eb6952;
+    border-radius: 50px 0 0 0;
+  }
+
+  &:nth-child(2) {
+    background: #a455c9;
+  }
+
+  &:nth-child(2)::after {
+    height: 100%;
+    top: 50%;
+    background: #6314c9;
+  }
+
+  &:nth-child(3) {
+    background: #2c2666;
+  }
+
+  &:nth-child(3)::after {
+    height: 50%;
+    top: 0;
+    background: #5a558a;
+    border-radius: 0 0 50px 0;
+  }
+
+  &__icon {
+    width: 70px;
+    height: 70px;
+    margin: 15px auto;
+  }
+}
+
+.additional-info {
+  margin: 20px 0;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-flow: column wrap;
+
+  &__title {
+    font-weight: bold;
+    margin-bottom: 14px;
+  }
+
+  &__item {
+    width: 100%;
+    display: flex;
+    padding: 5px 40px;
+    justify-content: space-between;
+    align-items: center;
+    font-size: 1.3rem;
+
+    &__icon {
+      width: 27px;
+      height: 27px;
+    }
+  }
+}
