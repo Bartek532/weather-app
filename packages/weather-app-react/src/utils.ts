@@ -1,5 +1,10 @@
 import axios from "axios";
-import { WEATHER_API_URL, WEATHER_API_KEY, TIME_API_URL } from "./consts";
+import {
+  WEATHER_API_URL,
+  WEATHER_API_KEY,
+  TIME_API_URL,
+  LOCATION_API_URL
+} from "./consts";
 
 export const getCurrentWeather = async (city: string) => {
   const { data } = await axios.get(
@@ -20,6 +25,14 @@ export const getDailyWeather = async (latitude: number, longitude: number) => {
 export const getTimezone = async (latitude: number, longitude: number) => {
   const { data } = await axios.get(
     `${TIME_API_URL}?key=VW216NLMWBQ1&format=json&by=position&lat=${latitude}&lng=${longitude}`
+  );
+
+  return data;
+};
+
+export const getCityNameByCoordinates = async (lat: number, lng: number) => {
+  const { data } = await axios.get(
+    `${LOCATION_API_URL}/reverse.php?key=195e70003d0429&lat=${lat}&lon=${lng}&format=json`
   );
 
   return data;

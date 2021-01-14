@@ -15,7 +15,7 @@
     display: grid;
     grid-template-columns: 1fr 4fr 3fr;
     place-items: center;
-    padding: 0 10px;
+    padding: 0 15px;
 
     .day-name {
       justify-self: start;
@@ -31,7 +31,7 @@
     .temp {
       font-size: 1.3em;
       justify-self: end;
-      padding-right: 10px;
+      padding-right: 5px;
 
       &__max {
         color: #d11d22;

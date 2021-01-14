@@ -1,51 +1,15 @@
 import { ReactComponent as SearchIcon } from "../assets/icons/defaultSearch.svg";
 import { ReactComponent as LocationSearchIcon } from "../assets/icons/locationSearch.svg";
-import { ChangeEvent, useState, useContext, useEffect } from "react";
-import { WeatherContext } from "./WeatherContext";
+import { ChangeEvent, useState } from "react";
 
-import { getCurrentWeather, getDailyWeather, getTimezone } from "../utils";
-
-export const SearchControls = () => {
+export const SearchControls = ({
+  search,
+  searchByLocation
+}: {
+  search: (city: string) => Promise<void>;
+  searchByLocation: () => Promise<void>;
+}) => {
   const [query, setQuery] = useState("");
-  const {
-    setLoading,
-    setError,
-    setCurrentWeather,
-    setDailyWeather,
-    setTimezone,
-    setDailyActiveDayIndex
-  } = useContext(WeatherContext);
-
-  const search = async (city: string) => {
-    setLoading(true);
-    try {
-      const currentWeather = await getCurrentWeather(city);
-      setCurrentWeather(currentWeather);
-
-      const { coord } = currentWeather;
-      setDailyWeather(await getDailyWeather(coord.lat, coord.lon));
-
-      const { countryName, formatted } = await getTimezone(
-        coord.lat,
-        coord.lon
-      );
-      setTimezone({ countryName, hour: Number(formatted.substring(11, 13)) });
-
-      setError(false);
-      setDailyActiveDayIndex(0);
-    } catch {
-      setError(true);
-    }
-    setLoading(false);
-  };
-
-  useEffect(() => {
-    async function searchFirstTime() {
-      return await search("London");
-    }
-
-    searchFirstTime();
-  }, []);
 
   const handleQueryUpdate = (e: ChangeEvent<HTMLInputElement>) => {
     setQuery(e.target.value);
@@ -73,11 +37,14 @@ export const SearchControls = () => {
       />
       <button
         className="search__btn search__btn--default"
-        onClick={() => search(query)}
+        onClick={search.bind(null, query)}
       >
         <SearchIcon />
       </button>
-      <button className="search__btn search__btn--location">
+      <button
+        className="search__btn search__btn--location"
+        onClick={searchByLocation.bind(null)}
+      >
         <LocationSearchIcon />
       </button>
     </div>
