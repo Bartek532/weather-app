@@ -27,6 +27,10 @@ button:focus {
   outline: 1px solid #000;
 }
 
+label {
+  display: none;
+}
+
 #root::after {
   z-index: -5;
   content: "";

@@ -27,7 +27,9 @@ export const SearchControls = ({
 
   return (
     <div className="search">
+      <label htmlFor="search">Search</label>
       <input
+        id="search"
         type="text"
         placeholder="Search city"
         className="search__input"
@@ -38,12 +40,14 @@ export const SearchControls = ({
       <button
         className="search__btn search__btn--default"
         onClick={search.bind(null, query)}
+        name="search"
       >
         <SearchIcon />
       </button>
       <button
         className="search__btn search__btn--location"
         onClick={searchByLocation.bind(null)}
+        name="search-by-location"
       >
         <LocationSearchIcon />
       </button>
