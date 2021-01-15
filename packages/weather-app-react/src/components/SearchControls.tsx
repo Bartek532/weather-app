@@ -40,14 +40,14 @@ export const SearchControls = ({
       <button
         className="search__btn search__btn--default"
         onClick={search.bind(null, query)}
-        name="search"
+        aria-label="search"
       >
         <SearchIcon />
       </button>
       <button
         className="search__btn search__btn--location"
         onClick={searchByLocation.bind(null)}
-        name="search-by-location"
+        aria-label="search-by-location"
       >
         <LocationSearchIcon />
       </button>

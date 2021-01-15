@@ -13,7 +13,7 @@ export const Day = ({
     <button
       className={`day ${isActive ? "day--active" : null}`}
       onClick={changeDay.bind(null, day)}
-      name="day"
+      aria-label="day"
     >
       <img
         src={require(`../../assets/icons/weather/${icon}.svg`).default}
