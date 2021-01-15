@@ -17,6 +17,7 @@ import {
 
 export const Main = () => {
   const {
+    error,
     loading,
     setLoading,
     setError,
@@ -42,6 +43,7 @@ export const Main = () => {
       setTimezone({ countryName, hour: Number(formatted.substring(11, 13)) });
 
       setError(false);
+      setDailyActiveDayIndex(3);
       setDailyActiveDayIndex(0);
     } catch {
       setError(true);
@@ -73,10 +75,23 @@ export const Main = () => {
     return <Loader />;
   }
 
+  if (error) {
+    return (
+      <div className="error">
+        <SearchControls search={search} searchByLocation={searchByLocation} />
+        <h1 className="error__text">
+          Niestety <span className="not-found">nie znaleziono</span> tego, czego
+          szukasz lub wystąpił <span className="error">błąd</span>, spróbuj
+          ponownie!
+        </h1>
+      </div>
+    );
+  }
+
   return (
     <div className="main">
       <SearchControls search={search} searchByLocation={searchByLocation} />
-      <Router>
+      <Router basename={process.env.PUBLIC_URL}>
         <Switch>
           <Route path="/" exact component={Home} />
           <Route path="/daily" exact component={Daily} />
