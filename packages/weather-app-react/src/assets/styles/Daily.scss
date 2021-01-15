@@ -144,22 +144,24 @@
   display: flex;
   justify-content: space-around;
   padding: 10px 20px;
+  list-style-type: none;
 
   .day {
-    border-radius: 10px;
-    margin: 0 2px;
-    padding: 8px 0px;
-    border: 0 none;
-    background-color: transparent;
-    outline: 0 none;
+    &__btn {
+      border-radius: 10px;
+      margin: 0 2px;
+      padding: 8px 0px;
+      border: 0 none;
+      background-color: transparent;
+      outline: 0 none;
+      &--active {
+        background-color: #5e2ce6;
+        color: #fff;
+      }
 
-    &--active {
-      background-color: #5e2ce6;
-      color: #fff;
-    }
-
-    &:focus {
-      box-shadow: 0 0 1pt 1pt #5e2ce6;
+      &:focus {
+        box-shadow: 0 0 1pt 1pt #5e2ce6;
+      }
     }
 
     &__icon {

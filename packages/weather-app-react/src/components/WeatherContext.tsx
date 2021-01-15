@@ -1,10 +1,8 @@
 import * as React from "react";
 import { useState, createContext, Dispatch, SetStateAction } from "react";
-import { CurrentWeatherType, DailyWeatherType, Timezone } from "../types";
+import type { CurrentWeatherType, DailyWeatherType, Timezone } from "../types";
 
-export const WeatherContext = createContext<WeatherContextType>(
-  {} as WeatherContextType
-);
+export const WeatherContext = createContext<Partial<WeatherContextType>>({});
 
 type WeatherContextType = {
   currentWeather: CurrentWeatherType;
@@ -13,9 +11,9 @@ type WeatherContextType = {
   loading: boolean;
   error: boolean;
   dailyActiveDayIndex: number;
-  setCurrentWeather: Dispatch<SetStateAction<CurrentWeatherType>>;
-  setDailyWeather: Dispatch<SetStateAction<DailyWeatherType>>;
-  setTimezone: Dispatch<SetStateAction<Timezone>>;
+  setCurrentWeather: Dispatch<SetStateAction<CurrentWeatherType | undefined>>;
+  setDailyWeather: Dispatch<SetStateAction<DailyWeatherType | undefined>>;
+  setTimezone: Dispatch<SetStateAction<Timezone | undefined>>;
   setLoading: Dispatch<SetStateAction<boolean>>;
   setError: Dispatch<SetStateAction<boolean>>;
   setDailyActiveDayIndex: Dispatch<SetStateAction<number>>;
@@ -26,14 +24,14 @@ type Props = {
 };
 
 export const WeatherProvider = (props: Props) => {
-  const [currentWeather, setCurrentWeather] = useState<CurrentWeatherType>(
-    {} as CurrentWeatherType
-  );
-  const [dailyWeather, setDailyWeather] = useState<DailyWeatherType>(
-    {} as DailyWeatherType
-  );
+  const [currentWeather, setCurrentWeather] = useState<
+    CurrentWeatherType | undefined
+  >(undefined);
+  const [dailyWeather, setDailyWeather] = useState<
+    DailyWeatherType | undefined
+  >(undefined);
 
-  const [timezone, setTimezone] = useState<Timezone>({} as Timezone);
+  const [timezone, setTimezone] = useState<Timezone | undefined>(undefined);
 
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(false);

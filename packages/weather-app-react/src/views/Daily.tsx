@@ -1,26 +1,26 @@
-import { useContext, useState, useEffect } from "react";
+import { useContext, useState, useEffect, memo } from "react";
 import { WeatherContext } from "../components/WeatherContext";
 import { MainInfo } from "../components/daily/MainInfo";
 import { HourlyWeather } from "../components/daily/HourlyWeather";
 import { DaysList } from "../components/daily/DaysList";
 import { getListOfDays } from "../utils";
 
-export const Daily = () => {
+export const Daily = memo(() => {
   const { dailyWeather, dailyActiveDayIndex } = useContext(WeatherContext);
 
   const [activeDay, setActiveDay] = useState(
-    dailyWeather.daily[dailyActiveDayIndex]
+    dailyWeather!.daily[dailyActiveDayIndex!]
   );
 
   useEffect(() => {
-    setActiveDay(dailyWeather.daily[dailyActiveDayIndex]);
+    setActiveDay(dailyWeather!.daily[dailyActiveDayIndex!]);
   }, [dailyActiveDayIndex]);
 
   const mainData = {
     icon: activeDay.weather[0].icon,
     min_temp: activeDay.temp.min,
     max_temp: activeDay.temp.max,
-    day: getListOfDays()[dailyActiveDayIndex]
+    day: getListOfDays()[dailyActiveDayIndex!]
   };
   const additionalData = {
     wind: activeDay.wind_speed,
@@ -35,7 +35,7 @@ export const Daily = () => {
     <div className="daily">
       <MainInfo main={mainData} additional={additionalData} />
       <HourlyWeather temp={{ morn, day, eve, night }} />
-      <DaysList weather={dailyWeather.daily} />
+      <DaysList weather={dailyWeather!.daily} />
     </div>
   );
-};
+});

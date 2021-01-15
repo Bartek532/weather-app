@@ -10,17 +10,19 @@ export const Day = ({
   isActive: boolean;
 }) => {
   return (
-    <button
-      className={`day ${isActive ? "day--active" : null}`}
-      onClick={changeDay.bind(null, day)}
-      aria-label="day"
-    >
-      <img
-        src={require(`../../assets/icons/weather/${icon}.svg`).default}
-        alt="weather-icon"
-        className="day__icon"
-      />
-      <span className="day__day-name">{day.substring(0, 3)}</span>
-    </button>
+    <li className="day">
+      <button
+        className={`day__btn ${isActive ? "day__btn--active" : null}`}
+        onClick={() => changeDay(day)}
+        aria-label="day"
+      >
+        <img
+          src={require(`../../assets/icons/weather/${icon}.svg`).default}
+          alt="weather-icon"
+          className="day__icon"
+        />
+        <span className="day__day-name">{day.substring(0, 3)}</span>
+      </button>
+    </li>
   );
 };

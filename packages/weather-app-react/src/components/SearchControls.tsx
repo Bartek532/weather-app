@@ -26,7 +26,7 @@ export const SearchControls = ({
   };
 
   return (
-    <div className="search">
+    <form className="search">
       <label htmlFor="search">Search</label>
       <input
         id="search"
@@ -39,18 +39,18 @@ export const SearchControls = ({
       />
       <button
         className="search__btn search__btn--default"
-        onClick={search.bind(null, query)}
+        onClick={() => search(query)}
         aria-label="search"
       >
         <SearchIcon />
       </button>
       <button
         className="search__btn search__btn--location"
-        onClick={searchByLocation.bind(null)}
+        onClick={() => searchByLocation()}
         aria-label="search-by-location"
       >
         <LocationSearchIcon />
       </button>
-    </div>
+    </form>
   );
 };

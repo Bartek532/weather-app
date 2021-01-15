@@ -27,24 +27,24 @@ export const MainInfo = ({ main, additional }: DailyWeatherDayType) => {
         </div>
       </div>
 
-      <div className="daily__main-info__additional">
-        <span className="item wind">
+      <ul className="daily__main-info__additional">
+        <li className="item wind">
           <span className="item__label">wind</span>
           <span className="item__value">{additional.wind}m/s</span>
-        </span>
-        <span className="item pressure">
+        </li>
+        <li className="item pressure">
           <span className="item__label">pressure</span>
           <span className="item__value">{additional.pressure}hPa</span>
-        </span>
-        <span className="item humidity">
+        </li>
+        <li className="item humidity">
           <span className="item__label">humidity</span>
           <span className="item__value">{additional.humidity}%</span>
-        </span>
-        <span className="item cloudiness">
+        </li>
+        <li className="item cloudiness">
           <span className="item__label">cloudiness</span>
           <span className="item__value">{additional.cloudiness}%</span>
-        </span>
-      </div>
+        </li>
+      </ul>
     </div>
   );
 };

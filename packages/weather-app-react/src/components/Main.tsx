@@ -5,7 +5,7 @@ import { Loader } from "./Loader";
 import { Navbar } from "./Navbar";
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 
-import { useContext, useEffect } from "react";
+import { useContext, useEffect, memo } from "react";
 import { WeatherContext } from "./WeatherContext";
 
 import {
@@ -15,7 +15,7 @@ import {
   getCityNameByCoordinates
 } from "../utils";
 
-export const Main = () => {
+export const Main = memo(() => {
   const {
     error,
     loading,
@@ -28,31 +28,30 @@ export const Main = () => {
   } = useContext(WeatherContext);
 
   const search = async (city: string) => {
-    setLoading(true);
+    setLoading!(true);
     try {
       const currentWeather = await getCurrentWeather(city);
-      setCurrentWeather(currentWeather);
+      setCurrentWeather!(currentWeather);
 
       const { coord } = currentWeather;
-      setDailyWeather(await getDailyWeather(coord.lat, coord.lon));
+      setDailyWeather!(await getDailyWeather(coord.lat, coord.lon));
 
       const { countryName, formatted } = await getTimezone(
         coord.lat,
         coord.lon
       );
-      setTimezone({ countryName, hour: Number(formatted.substring(11, 13)) });
+      setTimezone!({ countryName, hour: Number(formatted.substring(11, 13)) });
 
-      setError(false);
-      setDailyActiveDayIndex(3);
-      setDailyActiveDayIndex(0);
+      setError!(false);
+      setDailyActiveDayIndex!(0);
     } catch {
-      setError(true);
+      setError!(true);
     }
-    setLoading(false);
+    setLoading!(false);
   };
 
   const searchByLocation = async () => {
-    setLoading(true);
+    setLoading!(true);
     return navigator.geolocation.getCurrentPosition(async ({ coords }) => {
       const data = await getCityNameByCoordinates(
         coords.latitude,
@@ -64,11 +63,7 @@ export const Main = () => {
   };
 
   useEffect(() => {
-    async function searchFirstTime() {
-      return await search("London");
-    }
-
-    searchFirstTime();
+    search("London");
   }, []);
 
   if (loading) {
@@ -79,11 +74,11 @@ export const Main = () => {
     return (
       <div className="error">
         <SearchControls search={search} searchByLocation={searchByLocation} />
-        <h1 className="error__text">
+        <div className="error__text">
           Niestety <span className="not-found">nie znaleziono</span> tego, czego
           szukasz lub wystąpił <span className="error">błąd</span>, spróbuj
           ponownie!
-        </h1>
+        </div>
       </div>
     );
   }
@@ -100,4 +95,4 @@ export const Main = () => {
       </Router>
     </div>
   );
-};
+});

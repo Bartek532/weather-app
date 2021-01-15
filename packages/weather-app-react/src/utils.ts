@@ -39,13 +39,7 @@ export const getCityNameByCoordinates = async (lat: number, lng: number) => {
 };
 
 export const calculateHour = (actualTime: number, shift: number) => {
-  const shiftedTime = actualTime + shift;
-
-  if (shiftedTime > 23) {
-    return shiftedTime - 24;
-  }
-
-  return shiftedTime;
+  return (actualTime + shift) % 24;
 };
 
 export const calculateTemp = (temp: number, comma: number) => {
@@ -65,7 +59,7 @@ export const getListOfDays = () => {
   const today = new Date();
   const listOfDays = [];
   for (let i = today.getDay(); i < today.getDay() + 7; i++) {
-    i > 6 ? listOfDays.push(days[i - 7]) : listOfDays.push(days[i]);
+    listOfDays.push(days[i % 7]);
   }
 
   return listOfDays;

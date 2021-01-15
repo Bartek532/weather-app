@@ -1,4 +1,4 @@
-import { calculateTemp } from "../../utils";
+import { calculateTemp } from "../../../utils";
 
 export const HourlyWeatherItem = ({
   time,
@@ -13,7 +13,7 @@ export const HourlyWeatherItem = ({
     <div className="hourly__weather__item">
       <span className="hourly__weather__item__time">{time}:00</span>
       <img
-        src={require(`../../assets/icons/weather/${icon}.svg`).default}
+        src={require(`../../../assets/icons/weather/${icon}.svg`).default}
         alt="weather-icon"
         className="hourly__weather__item__icon"
       />

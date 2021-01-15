@@ -17,24 +17,24 @@ export const AdditionalInfo = ({
   cloudiness
 }: AdditionalInfoType) => {
   return (
-    <div className="additional-info">
+    <ul className="additional-info">
       <span className="additional-info__title">Additional info</span>
-      <div className="additional-info__item">
+      <li className="additional-info__item">
         <WindIcon className="additional-info__item__icon" />
         <span className="additional-info__item__text">{wind}m/s</span>
-      </div>
-      <div className="additional-info__item">
+      </li>
+      <li className="additional-info__item">
         <PressureIcon className="additional-info__item__icon" />
         <span className="additional-info__item__text">{pressure}hPa</span>
-      </div>
-      <div className="additional-info__item">
+      </li>
+      <li className="additional-info__item">
         <HumidityIcon className="additional-info__item__icon" />
         <span className="additional-info__item__text">{humidity}%</span>
-      </div>
-      <div className="additional-info__item">
+      </li>
+      <li className="additional-info__item">
         <CloudIcon className="additional-info__item__icon" />
         <span className="additional-info__item__text">{cloudiness}%</span>
-      </div>
-    </div>
+      </li>
+    </ul>
   );
 };

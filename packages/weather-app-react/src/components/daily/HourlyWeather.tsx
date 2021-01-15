@@ -1,5 +1,7 @@
 import { HourlyWeatherItem } from "./HourlyWeatherItem";
 
+const diffBetweenHours = 5;
+
 export const HourlyWeather = ({
   temp
 }: {
@@ -11,7 +13,7 @@ export const HourlyWeather = ({
       {Object.values(temp).map((item, index) => (
         <HourlyWeatherItem
           temp={Number(item)}
-          hour={startHour + 5 * index}
+          hour={startHour + diffBetweenHours * index}
           key={index}
         />
       ))}
