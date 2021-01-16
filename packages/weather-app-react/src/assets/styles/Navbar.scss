@@ -1,8 +1,13 @@
 nav {
+  max-width: 400px;
   width: 100%;
   display: flex;
   justify-content: space-between;
   padding: 15px 25px;
+  text-align: center;
+  position: relative;
+  left: 50%;
+  transform: translateX(-50%);
 
   .link {
     display: flex;
@@ -30,5 +35,11 @@ nav {
         color: #000;
       }
     }
+  }
+}
+
+@media all and (min-width: 1000px) {
+  .link {
+    transform: scale(1.3);
   }
 }

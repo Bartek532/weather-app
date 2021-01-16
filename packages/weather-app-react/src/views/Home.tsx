@@ -9,19 +9,23 @@ export const Home = memo(() => {
   const { currentWeather, dailyWeather, timezone } = useContext(WeatherContext);
   return (
     <div className="home">
-      <MainInfo
-        iconCode={currentWeather!.weather[0].icon}
-        city={currentWeather!.name}
-        country={timezone!.countryName}
-        temperature={currentWeather!.main.temp}
-      />
-      <HourlyWeather weather={dailyWeather!.hourly} time={timezone!} />
-      <AdditionalInfo
-        cloudiness={currentWeather!.clouds.all}
-        pressure={currentWeather!.main.pressure}
-        wind={currentWeather!.wind.speed}
-        humidity={currentWeather!.main.humidity}
-      />
+      <div className="home__main">
+        <MainInfo
+          iconCode={currentWeather!.weather[0].icon}
+          city={currentWeather!.name}
+          country={timezone!.countryName}
+          temperature={currentWeather!.main.temp}
+        />
+      </div>
+      <div className="home__additional">
+        <HourlyWeather weather={dailyWeather!.hourly} time={timezone!} />
+        <AdditionalInfo
+          cloudiness={currentWeather!.clouds.all}
+          pressure={currentWeather!.main.pressure}
+          wind={currentWeather!.wind.speed}
+          humidity={currentWeather!.main.humidity}
+        />
+      </div>
     </div>
   );
 });

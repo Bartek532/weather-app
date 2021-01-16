@@ -11,6 +11,10 @@ body {
   min-height: 100vh;
   overflow-x: hidden;
   background-color: #fff;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-flow: column wrap;
 }
 
 * {
@@ -40,10 +44,12 @@ label {
   border-top: 90vh solid #ebedf1;
   border-right: 100vw solid transparent;
   top: 0;
+  left: 0;
 }
 
 .error__text {
   width: 80%;
+  max-width: 500px;
   position: absolute;
   top: 50%;
   left: 50%;
@@ -58,5 +64,12 @@ label {
 
   .error {
     color: #d11d22;
+  }
+}
+
+@media all and (min-width: 1000px) {
+  .error__text {
+    font-size: 2.2rem;
+    line-height: 2.8rem;
   }
 }

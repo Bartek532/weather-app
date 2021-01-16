@@ -20,7 +20,8 @@ export const MainInfo = ({
         className="main-info__icon"
       />
       <span className="main-info__temp">
-        {calculateTemp(temperature, 1)} <sup>°</sup>
+        {calculateTemp(temperature, 1)}
+        <sup>°</sup>
       </span>
       <span className="main-info__place">
         {city}, {country}
