@@ -158,12 +158,12 @@
 @media all and (min-width: 1000px) {
   .home {
     display: flex;
-    justify-content: space-between;
+    justify-content: center;
     align-items: center;
     margin: 90px 0;
 
     &__main {
-      transform: scale(1.7);
+      transform: scale(1.7) translateY(-20px);
       margin-right: 200px;
     }
 

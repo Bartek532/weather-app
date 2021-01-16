@@ -49,7 +49,8 @@
     display: grid;
     grid-template-columns: 1fr 1fr;
     grid-gap: 10px 30px;
-    padding: 20px 25px;
+    margin: 20px 25px;
+    padding: 0;
 
     .item {
       display: flex;
@@ -81,6 +82,8 @@
     color: #fff;
     width: 40vw;
     height: 40vw;
+    max-width: 180px;
+    max-height: 180px;
     margin: 20px 0px;
     border-radius: 20px;
     box-shadow: 0px 13px 39px -1px rgba(179, 177, 179, 1);
@@ -103,6 +106,11 @@
     .item__temp {
       font-size: 4rem;
       margin: 10px;
+    }
+
+    .item__hour {
+      position: absolute;
+      bottom: 15px;
     }
 
     &:first-child {
@@ -147,20 +155,29 @@
   list-style-type: none;
 
   .day {
+    width: 15%;
     &__btn {
+      width: 100%;
+      max-width: 60px;
       border-radius: 10px;
       margin: 0 2px;
       padding: 8px 0px;
       border: 0 none;
       background-color: transparent;
       outline: 0 none;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      flex-flow: column wrap;
+      cursor: pointer;
+
       &--active {
         background-color: #5e2ce6;
         color: #fff;
       }
 
       &:focus {
-        box-shadow: 0 0 1pt 1pt #5e2ce6;
+        box-shadow: 0 0 0.6pt 0.6pt #5e2ce6;
       }
     }
 
@@ -169,5 +186,62 @@
       height: 43px;
       margin-bottom: 5px;
     }
+  }
+}
+
+@media all and (min-width: 500px) {
+  .days {
+    .day {
+      transform: scale(1.1);
+    }
+  }
+}
+
+@media all and (min-width: 1000px) {
+  .daily {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 50px 0 40px 0;
+
+    &__main-info {
+      max-width: 350px;
+      transform: scale(1.3) translateY(-20px);
+      margin-right: 90px;
+
+      &__additional {
+        display: flex;
+        align-self: center;
+        justify-content: center;
+        align-items: space-evenly;
+        flex-flow: column wrap;
+        max-width: 230px;
+        border-left: 4px solid #5e2ce6;
+        padding-left: 25px;
+      }
+
+      &__wrapper {
+        margin: 10px 0;
+      }
+    }
+
+    &__additional {
+      width: 500px;
+    }
+
+    .days {
+      margin-top: 30px;
+      transform: scale(1.2);
+
+      .day {
+        margin: 0 7px;
+      }
+    }
+  }
+}
+
+@media all and (min-width: 1200px) {
+  .daily__main-info {
+    margin-right: 200px;
   }
 }

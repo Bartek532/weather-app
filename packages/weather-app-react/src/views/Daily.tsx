@@ -33,9 +33,13 @@ export const Daily = memo(() => {
 
   return (
     <div className="daily">
-      <MainInfo main={mainData} additional={additionalData} />
-      <HourlyWeather temp={{ morn, day, eve, night }} />
-      <DaysList weather={dailyWeather!.daily} />
+      <div className="daily__main">
+        <MainInfo main={mainData} additional={additionalData} />
+      </div>
+      <div className="daily__additional">
+        <HourlyWeather temp={{ morn, day, eve, night }} />
+        <DaysList weather={dailyWeather!.daily} />
+      </div>
     </div>
   );
 });

@@ -72,9 +72,9 @@ export const Main = memo(() => {
 
   if (error) {
     return (
-      <div className="error">
+      <div className="error__wrapper">
         <SearchControls search={search} searchByLocation={searchByLocation} />
-        <div className="error__text">
+        <div className="error__wrapper__text">
           Niestety <span className="not-found">nie znaleziono</span> tego, czego
           szukasz lub wystąpił <span className="error">błąd</span>, spróbuj
           ponownie!
