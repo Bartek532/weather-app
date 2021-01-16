@@ -11,11 +11,11 @@ export const HourlyWeatherToday = ({
 }) => {
   return (
     <div className="hourly__weather">
-      {weather.slice(0, 3).map((item, index) => {
+      {weather.slice(1, 4).map((item, index) => {
         return (
           <HourlyWeatherItem
             key={item.dt}
-            time={calculateHour(time.hour, index)}
+            time={calculateHour(time.hour, index + 1)}
             temp={item!.temp!}
             icon={item!.weather![0].icon}
           />
