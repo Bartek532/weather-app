@@ -1,30 +1,89 @@
 <template>
-  <div id="nav">
-    <router-link to="/">Home</router-link> |
-    <router-link to="/about">About</router-link>
-  </div>
-  <router-view />
+  <Main />
 </template>
 
+<script>
+import Main from "@/components/Main";
+export default {
+  components: {
+    Main
+  }
+};
+</script>
+
 <style lang="scss">
-#app {
-  font-family: Avenir, Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
+@import url("https://fonts.googleapis.com/css?family=Didact+Gothic&display=swap");
+
+body {
+  padding: 0;
+  margin: 0;
+  min-height: 100vh;
+  overflow-x: hidden;
+  background-color: #fff;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-flow: column wrap;
 }
 
-#nav {
-  padding: 30px;
+* {
+  box-sizing: border-box;
+  font-family: "Didact Gothic", sans-serif;
+  -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+}
 
-  a {
+.hourly__navbar__item--active {
+  font-weight: bold;
+}
+
+button:focus {
+  outline: 1px solid #000;
+}
+
+label {
+  display: none;
+}
+
+#app::after {
+  z-index: -5;
+  content: "";
+  position: absolute;
+  width: 0;
+  height: 0;
+  border-top: 90vh solid #ebedf1;
+  border-right: 100vw solid transparent;
+  top: 0;
+  left: 0;
+}
+
+.error__wrapper {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-flow: column wrap;
+
+  &__text {
+    width: 80%;
+    max-width: 500px;
+    font-size: 1.8rem;
+    text-align: center;
     font-weight: bold;
-    color: #2c3e50;
+    padding: 20px 0;
 
-    &.router-link-exact-active {
-      color: #42b983;
+    .not-found {
+      color: #2e5fe6;
     }
+
+    .error {
+      color: #d11d22;
+    }
+  }
+}
+
+@media all and (min-width: 1000px) {
+  .error__text {
+    font-size: 2.2rem;
+    line-height: 2.8rem;
   }
 }
 </style>

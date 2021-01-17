@@ -1,0 +1,273 @@
+<template>
+  <div class="daily">
+    <div class="daily__main">
+      <MainInfo />
+    </div>
+    <div class="daily__additional">
+      <HourlyWeather />
+      <DaysList />
+    </div>
+  </div>
+</template>
+
+<script lang="ts">
+import MainInfo from "@/components/daily/MainInfo.vue";
+import HourlyWeather from "@/components/daily/HourlyWeather.vue";
+import DaysList from "@/components/daily/DaysList.vue";
+export default {
+  components: {
+    MainInfo,
+    HourlyWeather,
+    DaysList
+  }
+};
+</script>
+
+<style lang="scss" scoped>
+.daily__main-info {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  flex-flow: column wrap;
+
+  &__title {
+    font-size: 1.5rem;
+    padding: 0 30px;
+  }
+
+  &__wrapper {
+    width: 100%;
+    display: grid;
+    grid-template-columns: 1fr 4fr 3fr;
+    place-items: center;
+    padding: 0 15px;
+
+    .day-name {
+      justify-self: start;
+      font-weight: bold;
+      font-size: 1.3rem;
+      padding-left: 17px;
+    }
+    .icon {
+      width: 65px;
+      height: 65px;
+    }
+
+    .temp {
+      font-size: 1.3em;
+      justify-self: end;
+      padding-right: 5px;
+
+      &__max {
+        color: #d11d22;
+        padding: 0 4px;
+      }
+
+      &__min {
+        color: #2e5fe6;
+      }
+    }
+  }
+
+  &__additional {
+    width: 100%;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    padding: 5px 25px;
+    grid-gap: 7px 30px;
+
+    .item {
+      display: flex;
+      justify-content: space-between;
+
+      &__label {
+        text-transform: capitalize;
+        font-weight: bold;
+      }
+    }
+  }
+}
+
+.daily__hourly-weather {
+  width: 100%;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  margin: 10px 0;
+  margin-bottom: 15px;
+
+  &__item {
+    position: relative;
+    overflow: hidden;
+    justify-self: center;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-flow: column wrap;
+    color: #fff;
+    width: 40vw;
+    height: 40vw;
+    max-width: 180px;
+    max-height: 180px;
+    margin: 20px 0px;
+    border-radius: 20px;
+    box-shadow: 0px 13px 39px -1px rgba(179, 177, 179, 1);
+
+    &::after {
+      content: "";
+      width: 100%;
+      height: 200%;
+      top: -78%;
+      left: -40%;
+      position: absolute;
+      transform: rotate(45deg);
+    }
+
+    span {
+      z-index: 10;
+      position: relative;
+    }
+
+    .item__temp {
+      font-size: 4rem;
+      transform: translate(8px, -7px);
+    }
+
+    .item__hour {
+      position: absolute;
+      bottom: 15px;
+    }
+
+    &:first-child {
+      background: #f5dc1d;
+
+      &::after {
+        background-color: #f09618;
+      }
+    }
+
+    &:nth-child(2) {
+      background: #f525bd;
+
+      &::after {
+        background-color: #e82a43;
+      }
+    }
+
+    &:nth-child(3) {
+      background: #a938eb;
+
+      &::after {
+        background-color: #7a17b3;
+      }
+    }
+
+    &:nth-child(4) {
+      background: #5211f5;
+
+      &::after {
+        background-color: #33118a;
+      }
+    }
+  }
+}
+
+.days {
+  width: 100%;
+  display: flex;
+  justify-content: space-around;
+  padding: 10px 20px;
+  list-style-type: none;
+
+  .day {
+    width: 15%;
+    &__btn {
+      width: 100%;
+      max-width: 60px;
+      border-radius: 10px;
+      margin: 0 2px;
+      padding: 8px 0px;
+      border: 0 none;
+      background-color: transparent;
+      outline: 0 none;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      flex-flow: column wrap;
+      cursor: pointer;
+
+      &--active {
+        background-color: #5e2ce6;
+        color: #fff;
+      }
+
+      &:focus {
+        box-shadow: 0 0 0.6pt 0.6pt #5e2ce6;
+      }
+    }
+
+    &__icon {
+      width: 43px;
+      height: 43px;
+      margin-bottom: 5px;
+    }
+  }
+}
+
+@media all and (min-width: 500px) {
+  .days {
+    .day {
+      transform: scale(1.1);
+    }
+  }
+}
+
+@media all and (min-width: 1000px) {
+  .daily {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 50px 0 40px 0;
+
+    &__main-info {
+      max-width: 350px;
+      transform: scale(1.3) translateY(-20px);
+      margin-right: 90px;
+
+      &__additional {
+        display: flex;
+        align-self: center;
+        justify-content: center;
+        align-items: space-evenly;
+        flex-flow: column wrap;
+        max-width: 230px;
+        border-left: 4px solid #5e2ce6;
+        padding-left: 25px;
+      }
+
+      &__wrapper {
+        margin: 10px 0;
+      }
+    }
+
+    &__additional {
+      width: 500px;
+    }
+
+    .days {
+      margin-top: 30px;
+      transform: scale(1.2);
+
+      .day {
+        margin: 0 7px;
+      }
+    }
+  }
+}
+
+@media all and (min-width: 1200px) {
+  .daily__main-info {
+    margin-right: 200px;
+  }
+}
+</style>
