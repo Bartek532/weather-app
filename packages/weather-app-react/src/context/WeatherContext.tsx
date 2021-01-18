@@ -2,21 +2,36 @@ import * as React from "react";
 import { useState, createContext, Dispatch, SetStateAction } from "react";
 import type { CurrentWeatherType, DailyWeatherType, Timezone } from "../types";
 
-export const WeatherContext = createContext<Partial<WeatherContextType>>({});
+export const WeatherContext = createContext<
+  BasicContextType & Partial<WeatherContextType>
+>({
+  error: false,
+  setError: () => {},
+  loading: false,
+  setLoading: () => {},
+  currentSelectedDayIndex: 0,
+  setCurrentSelectedDayIndex: () => {},
+  setCurrentWeather: () => {},
+  setDailyWeather: () => {},
+  setTimezone: () => {}
+});
+
+type BasicContextType = {
+  loading: boolean;
+  error: boolean;
+  currentSelectedDayIndex: number;
+  setLoading: Dispatch<SetStateAction<boolean>>;
+  setError: Dispatch<SetStateAction<boolean>>;
+  setCurrentSelectedDayIndex: Dispatch<SetStateAction<number>>;
+  setCurrentWeather: Dispatch<SetStateAction<CurrentWeatherType | undefined>>;
+  setDailyWeather: Dispatch<SetStateAction<DailyWeatherType | undefined>>;
+  setTimezone: Dispatch<SetStateAction<Timezone | undefined>>;
+};
 
 type WeatherContextType = {
   currentWeather: CurrentWeatherType;
   dailyWeather: DailyWeatherType;
   timezone: Timezone;
-  loading: boolean;
-  error: boolean;
-  dailyActiveDayIndex: number;
-  setCurrentWeather: Dispatch<SetStateAction<CurrentWeatherType | undefined>>;
-  setDailyWeather: Dispatch<SetStateAction<DailyWeatherType | undefined>>;
-  setTimezone: Dispatch<SetStateAction<Timezone | undefined>>;
-  setLoading: Dispatch<SetStateAction<boolean>>;
-  setError: Dispatch<SetStateAction<boolean>>;
-  setDailyActiveDayIndex: Dispatch<SetStateAction<number>>;
 };
 
 type Props = {
@@ -35,7 +50,7 @@ export const WeatherProvider = (props: Props) => {
 
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(false);
-  const [dailyActiveDayIndex, setDailyActiveDayIndex] = useState(0);
+  const [currentSelectedDayIndex, setCurrentSelectedDayIndex] = useState(0);
 
   return (
     <WeatherContext.Provider
@@ -50,8 +65,8 @@ export const WeatherProvider = (props: Props) => {
         setLoading,
         error,
         setError,
-        dailyActiveDayIndex,
-        setDailyActiveDayIndex
+        currentSelectedDayIndex,
+        setCurrentSelectedDayIndex
       }}
     >
       {props.children}

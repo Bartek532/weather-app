@@ -1,35 +1,28 @@
 import { useContext, useState, useEffect, memo } from "react";
-import { WeatherContext } from "../components/WeatherContext";
+import { WeatherContext } from "../context/WeatherContext";
 import { MainInfo } from "../components/daily/MainInfo";
 import { HourlyWeather } from "../components/daily/HourlyWeather";
 import { DaysList } from "../components/daily/DaysList";
-import { getListOfDays } from "../utils";
+import { getWeatherInfoAboutSelectedDay } from "../utils";
 
 export const Daily = memo(() => {
-  const { dailyWeather, dailyActiveDayIndex } = useContext(WeatherContext);
+  const { dailyWeather, currentSelectedDayIndex } = useContext(WeatherContext);
 
-  const [activeDay, setActiveDay] = useState(
-    dailyWeather!.daily[dailyActiveDayIndex!]
+  const [
+    { mainData, additionalData, temperature },
+    setSelectedDayInfo
+  ] = useState(
+    getWeatherInfoAboutSelectedDay(currentSelectedDayIndex, dailyWeather!.daily)
   );
 
   useEffect(() => {
-    setActiveDay(dailyWeather!.daily[dailyActiveDayIndex!]);
-  }, [dailyActiveDayIndex]);
-
-  const mainData = {
-    icon: activeDay.weather[0].icon,
-    min_temp: activeDay.temp.min,
-    max_temp: activeDay.temp.max,
-    day: getListOfDays()[dailyActiveDayIndex!]
-  };
-  const additionalData = {
-    wind: activeDay.wind_speed,
-    pressure: activeDay.pressure,
-    humidity: activeDay.humidity,
-    cloudiness: activeDay.clouds
-  };
-
-  const { morn, day, eve, night } = activeDay.temp;
+    setSelectedDayInfo(
+      getWeatherInfoAboutSelectedDay(
+        currentSelectedDayIndex,
+        dailyWeather!.daily
+      )
+    );
+  }, [currentSelectedDayIndex]);
 
   return (
     <div className="daily">
@@ -37,7 +30,7 @@ export const Daily = memo(() => {
         <MainInfo main={mainData} additional={additionalData} />
       </div>
       <div className="daily__additional">
-        <HourlyWeather temp={{ morn, day, eve, night }} />
+        <HourlyWeather temp={temperature} />
         <DaysList weather={dailyWeather!.daily} />
       </div>
     </div>

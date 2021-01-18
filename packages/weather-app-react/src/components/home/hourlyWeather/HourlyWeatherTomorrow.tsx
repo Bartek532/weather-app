@@ -6,7 +6,7 @@ export const HourlyWeatherTomorrow = ({
   weather,
   time
 }: {
-  weather: Partial<BasicWeatherInfo>[];
+  weather: BasicWeatherInfo[];
   time: Timezone;
 }) => {
   return (
@@ -23,8 +23,8 @@ export const HourlyWeatherTomorrow = ({
             <HourlyWeatherItem
               key={item.dt}
               time={calculateHour(time.hour, index + 1)}
-              temp={item!.temp!}
-              icon={item!.weather![0].icon}
+              temp={item.temp}
+              icon={item.weather[0].icon}
             />
           );
         }

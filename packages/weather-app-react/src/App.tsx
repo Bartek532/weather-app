@@ -1,5 +1,5 @@
 import "./App.scss";
-import { WeatherProvider } from "./components/WeatherContext";
+import { WeatherProvider } from "./context/WeatherContext";
 import { Main } from "./components/Main";
 
 function App() {

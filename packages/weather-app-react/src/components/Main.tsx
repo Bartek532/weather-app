@@ -3,10 +3,11 @@ import { Home } from "../views/Home";
 import { Daily } from "../views/Daily";
 import { Loader } from "./Loader";
 import { Navbar } from "./Navbar";
+import { Error } from "./Error";
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 
 import { useContext, useEffect, memo } from "react";
-import { WeatherContext } from "./WeatherContext";
+import { WeatherContext } from "../context/WeatherContext";
 
 import {
   getCurrentWeather,
@@ -24,42 +25,59 @@ export const Main = memo(() => {
     setCurrentWeather,
     setDailyWeather,
     setTimezone,
-    setDailyActiveDayIndex
+    setCurrentSelectedDayIndex
   } = useContext(WeatherContext);
 
   const search = async (city: string) => {
-    setLoading!(true);
+    if (!city.trim().length) {
+      setError(true);
+      return;
+    }
+
+    setLoading(true);
     try {
       const currentWeather = await getCurrentWeather(city);
-      setCurrentWeather!(currentWeather);
+      setCurrentWeather(currentWeather);
 
       const { coord } = currentWeather;
-      setDailyWeather!(await getDailyWeather(coord.lat, coord.lon));
+      setDailyWeather(await getDailyWeather(coord.lat, coord.lon));
 
       const { countryName, formatted } = await getTimezone(
         coord.lat,
         coord.lon
       );
-      setTimezone!({ countryName, hour: Number(formatted.substring(11, 13)) });
+      setTimezone({ countryName, hour: Number(formatted.substring(11, 13)) });
 
-      setError!(false);
-      setDailyActiveDayIndex!(0);
+      setError(false);
+      setCurrentSelectedDayIndex(0);
     } catch {
-      setError!(true);
+      setError(true);
     }
-    setLoading!(false);
+    setLoading(false);
   };
 
   const searchByLocation = async () => {
-    setLoading!(true);
-    return navigator.geolocation.getCurrentPosition(async ({ coords }) => {
-      const data = await getCityNameByCoordinates(
-        coords.latitude,
-        coords.longitude
-      );
+    setLoading(true);
 
-      search(data.address.city);
-    });
+    if (!("geolocation" in navigator)) {
+      setError(true);
+      return;
+    }
+
+    return navigator.geolocation.getCurrentPosition(
+      async ({ coords }) => {
+        const data = await getCityNameByCoordinates(
+          coords.latitude,
+          coords.longitude
+        );
+
+        search(data.address.city);
+      },
+      () => {
+        setLoading(false);
+        setError(true);
+      }
+    );
   };
 
   useEffect(() => {
@@ -74,11 +92,7 @@ export const Main = memo(() => {
     return (
       <div className="error__wrapper">
         <SearchControls search={search} searchByLocation={searchByLocation} />
-        <div className="error__wrapper__text">
-          Niestety <span className="not-found">nie znaleziono</span> tego, czego
-          szukasz lub wystąpił <span className="error">błąd</span>, spróbuj
-          ponownie!
-        </div>
+        <Error />
       </div>
     );
   }

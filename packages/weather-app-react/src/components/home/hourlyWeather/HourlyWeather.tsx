@@ -7,7 +7,7 @@ export const HourlyWeather = ({
   weather,
   time
 }: {
-  weather: Partial<BasicWeatherInfo>[];
+  weather: BasicWeatherInfo[];
   time: Timezone;
 }) => {
   const [isTodayActive, setIsTodayActive] = useState(true);

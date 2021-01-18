@@ -91,7 +91,7 @@ export type DailyWeatherItem = {
 export type DailyWeatherType = {
   current: BasicWeatherInfo;
   daily: DailyWeatherItem[];
-  hourly: Partial<BasicWeatherInfo>[];
+  hourly: BasicWeatherInfo[];
   lat: number;
   lon: number;
   minutely: { dt: number; precipitation: number }[];

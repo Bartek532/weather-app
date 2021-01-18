@@ -103,7 +103,7 @@
     }
 
     .item__temp {
-      font-size: 4rem;
+      font-size: 3.3rem;
       transform: translate(8px, -7px);
     }
 
@@ -147,7 +147,8 @@
 }
 
 .days {
-  width: 100%;
+  width: 100vw;
+  max-width: 100%;
   display: flex;
   justify-content: space-around;
   padding: 10px 20px;
@@ -185,6 +186,12 @@
       height: 43px;
       margin-bottom: 5px;
     }
+  }
+}
+
+@media all and (min-width: 350px) {
+  .daily__hourly-weather .item__temp {
+    font-size: 4rem;
   }
 }
 

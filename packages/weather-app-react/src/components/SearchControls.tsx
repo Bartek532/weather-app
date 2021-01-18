@@ -15,18 +15,13 @@ export const SearchControls = ({
     setQuery(e.target.value);
   };
 
-  const handleSearchByEnter = async (
-    e: React.KeyboardEvent<HTMLInputElement>
-  ) => {
-    if (e.key === "Enter") {
-      return search(query);
-    }
-
-    return;
+  const handleSearch = (e: React.FormEvent<EventTarget>) => {
+    e.preventDefault();
+    return search(query);
   };
 
   return (
-    <form className="search">
+    <form className="search" onSubmit={handleSearch}>
       <label htmlFor="search">Search</label>
       <input
         id="search"
@@ -35,13 +30,8 @@ export const SearchControls = ({
         className="search__input"
         value={query}
         onChange={handleQueryUpdate}
-        onKeyDown={handleSearchByEnter}
       />
-      <button
-        className="search__btn search__btn--default"
-        onClick={() => search(query)}
-        aria-label="search"
-      >
+      <button className="search__btn search__btn--default" aria-label="search">
         <SearchIcon />
       </button>
       <button

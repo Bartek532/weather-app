@@ -5,6 +5,7 @@ import {
   TIME_API_URL,
   LOCATION_API_URL
 } from "./consts";
+import type { DailyWeatherItem } from "./types";
 
 export const getCurrentWeather = async (city: string) => {
   const { data } = await axios.get(
@@ -38,6 +39,14 @@ export const getCityNameByCoordinates = async (lat: number, lng: number) => {
   return data;
 };
 
+export const getUserPosition = () => {
+  if (!("geolocation" in navigator)) {
+    throw new Error("Geolocation is not available");
+  }
+
+  return navigator.geolocation.getCurrentPosition;
+};
+
 export const calculateHour = (actualTime: number, shift: number) => {
   return (actualTime + shift) % 24;
 };
@@ -63,4 +72,28 @@ export const getListOfDays = () => {
   }
 
   return listOfDays;
+};
+
+export const getWeatherInfoAboutSelectedDay = (
+  index: number,
+  dailyWeather: DailyWeatherItem[]
+) => {
+  const selectedDay = dailyWeather[index];
+
+  const mainData = {
+    icon: selectedDay.weather[0].icon,
+    min_temp: selectedDay.temp.min,
+    max_temp: selectedDay.temp.max,
+    day: getListOfDays()[index]
+  };
+  const additionalData = {
+    wind: selectedDay.wind_speed,
+    pressure: selectedDay.pressure,
+    humidity: selectedDay.humidity,
+    cloudiness: selectedDay.clouds
+  };
+
+  const { morn, day, eve, night } = selectedDay.temp;
+
+  return { mainData, additionalData, temperature: { morn, day, eve, night } };
 };

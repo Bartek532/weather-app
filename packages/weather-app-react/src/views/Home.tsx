@@ -3,7 +3,7 @@ import { MainInfo } from "../components/home/MainInfo";
 import { AdditionalInfo } from "../components/home/AdditionalInfo";
 import { HourlyWeather } from "../components/home/hourlyWeather/HourlyWeather";
 
-import { WeatherContext } from "../components/WeatherContext";
+import { WeatherContext } from "../context/WeatherContext";
 
 export const Home = memo(() => {
   const { currentWeather, dailyWeather, timezone } = useContext(WeatherContext);

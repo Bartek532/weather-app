@@ -2,15 +2,15 @@ import { Day } from "./Day";
 import { getListOfDays } from "../../utils";
 import type { DailyWeatherItem } from "../../types";
 import { useContext, memo } from "react";
-import { WeatherContext } from "../WeatherContext";
+import { WeatherContext } from "../../context/WeatherContext";
 
 export const DaysList = memo(({ weather }: { weather: DailyWeatherItem[] }) => {
-  const { setDailyActiveDayIndex, dailyActiveDayIndex } = useContext(
+  const { setCurrentSelectedDayIndex, currentSelectedDayIndex } = useContext(
     WeatherContext
   );
 
   const handleDayChange = (day: string) => {
-    setDailyActiveDayIndex!(getListOfDays().findIndex(item => item === day));
+    setCurrentSelectedDayIndex(getListOfDays().findIndex(item => item === day));
   };
 
   return (
@@ -22,7 +22,7 @@ export const DaysList = memo(({ weather }: { weather: DailyWeatherItem[] }) => {
             day={getListOfDays()[index]}
             key={item.dt}
             changeDay={handleDayChange}
-            isActive={index === dailyActiveDayIndex}
+            isActive={index === currentSelectedDayIndex}
           />
         );
       })}
