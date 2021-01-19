@@ -10,7 +10,7 @@ export const HourlyWeatherToday = ({
   time: Timezone;
 }) => {
   return (
-    <div className="hourly__weather">
+    <article className="hourly__weather">
       {weather.slice(1, 4).map((item, index) => {
         return (
           <HourlyWeatherItem
@@ -18,9 +18,10 @@ export const HourlyWeatherToday = ({
             time={calculateHour(time.hour, index + 1)}
             temp={item.temp}
             icon={item.weather[0].icon}
+            iconDescription={item.weather[0].description}
           />
         );
       })}
-    </div>
+    </article>
   );
 };

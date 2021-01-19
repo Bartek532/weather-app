@@ -1,11 +1,13 @@
 export const Day = ({
   icon,
   day,
+  iconDescription,
   changeDay,
   isActive
 }: {
   icon: string;
   day: string;
+  iconDescription: string;
   changeDay: (day: string) => void;
   isActive: boolean;
 }) => {
@@ -18,7 +20,7 @@ export const Day = ({
       >
         <img
           src={require(`../../assets/icons/weather/${icon}.svg`).default}
-          alt="weather-icon"
+          alt={`${iconDescription} icon`}
           className="day__icon"
         />
         <span className="day__day-name">{day.substring(0, 3)}</span>

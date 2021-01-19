@@ -15,6 +15,7 @@ export const Home = memo(() => {
           city={currentWeather!.name}
           country={timezone!.countryName}
           temperature={currentWeather!.main.temp}
+          iconDescription={currentWeather!.weather[0].description}
         />
       </div>
       <div className="home__additional">

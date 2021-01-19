@@ -22,23 +22,27 @@ export const SearchControls = ({
 
   return (
     <form className="search" onSubmit={handleSearch}>
-      <label htmlFor="search">Search</label>
+      <label htmlFor="search" className="sr-only">
+        Search
+      </label>
       <input
         id="search"
-        type="text"
+        type="search"
+        role="search"
         placeholder="Search city"
         className="search__input"
         value={query}
         onChange={handleQueryUpdate}
       />
-      <button className="search__btn search__btn--default" aria-label="search">
+      <button className="search__btn search__btn--default" type="submit">
+        <span className="sr-only">search</span>
         <SearchIcon />
       </button>
       <button
         className="search__btn search__btn--location"
         onClick={() => searchByLocation()}
-        aria-label="search-by-location"
       >
+        <span className="sr-only">search by location</span>
         <LocationSearchIcon />
       </button>
     </form>

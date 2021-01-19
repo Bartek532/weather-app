@@ -20,6 +20,7 @@ export const DaysList = memo(({ weather }: { weather: DailyWeatherItem[] }) => {
           <Day
             icon={item.weather[0].icon}
             day={getListOfDays()[index]}
+            iconDescription={item.weather[0].description}
             key={item.dt}
             changeDay={handleDayChange}
             isActive={index === currentSelectedDayIndex}

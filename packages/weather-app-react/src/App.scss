@@ -30,11 +30,6 @@ body {
 button:focus {
   outline: 1px solid #000;
 }
-
-label {
-  display: none;
-}
-
 #root::after {
   z-index: -5;
   content: "";
@@ -69,6 +64,17 @@ label {
       color: #d11d22;
     }
   }
+}
+
+.sr-only {
+  position: absolute;
+  top: auto;
+  overflow: hidden;
+  clip: rect(1px 1px 1px 1px); /* IE 6/7 */
+  clip: rect(1px, 1px, 1px, 1px);
+  width: 1px;
+  height: 1px;
+  white-space: nowrap;
 }
 
 @media all and (min-width: 1000px) {

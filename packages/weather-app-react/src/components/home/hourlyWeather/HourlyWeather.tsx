@@ -12,30 +12,30 @@ export const HourlyWeather = ({
 }) => {
   const [isTodayActive, setIsTodayActive] = useState(true);
   return (
-    <div className="hourly">
+    <section className="hourly">
       <div className="hourly__navbar">
-        <span
+        <button
           className={`hourly__navbar__item ${
             isTodayActive && "hourly__navbar__item--active"
           }`}
           onClick={() => setIsTodayActive(true)}
         >
           Today
-        </span>
-        <span
+        </button>
+        <button
           className={`hourly__navbar__item ${
             !isTodayActive && "hourly__navbar__item--active"
           }`}
           onClick={() => setIsTodayActive(false)}
         >
           Tomorrow
-        </span>
+        </button>
       </div>
       {isTodayActive ? (
         <HourlyWeatherToday weather={weather} time={time} />
       ) : (
         <HourlyWeatherTomorrow weather={weather} time={time} />
       )}
-    </div>
+    </section>
   );
 };

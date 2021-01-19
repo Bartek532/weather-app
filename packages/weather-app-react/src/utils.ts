@@ -84,7 +84,8 @@ export const getWeatherInfoAboutSelectedDay = (
     icon: selectedDay.weather[0].icon,
     min_temp: selectedDay.temp.min,
     max_temp: selectedDay.temp.max,
-    day: getListOfDays()[index]
+    day: getListOfDays()[index],
+    iconDescription: selectedDay.weather[0].description
   };
   const additionalData = {
     wind: selectedDay.wind_speed,

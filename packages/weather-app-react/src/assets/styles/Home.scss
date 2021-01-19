@@ -42,9 +42,13 @@
 
   &__navbar__item {
     padding: 0 10px;
+    margin: 0 2px;
+    font-size: 0.95rem;
     font-weight: bold;
     color: #9ca3ad;
     cursor: pointer;
+    border: 0 none;
+    background-color: transparent;
 
     &--active {
       color: #000;
@@ -173,7 +177,8 @@
   }
 
   .main-info__title {
-    display: none;
+    margin: 0;
+    font-size: 0.8rem;
   }
 
   .additional-info {

@@ -50,6 +50,7 @@
     grid-template-columns: 1fr 1fr;
     padding: 5px 25px;
     grid-gap: 7px 30px;
+    font-size: 0.9rem;
 
     .item {
       display: flex;
@@ -113,10 +114,10 @@
     }
 
     &:first-child {
-      background: #f5dc1d;
+      background: #fdb833;
 
       &::after {
-        background-color: #f09618;
+        background-color: #ff9500;
       }
     }
 
@@ -192,6 +193,10 @@
 @media all and (min-width: 350px) {
   .daily__hourly-weather .item__temp {
     font-size: 4rem;
+  }
+
+  .daily__main-info__additional {
+    font-size: 1rem;
   }
 }
 
