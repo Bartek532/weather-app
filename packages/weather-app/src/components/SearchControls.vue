@@ -12,13 +12,14 @@
     <button
       class="search__btn search__btn--default"
       aria-label="search"
-      @click="search"
+      @click="$emit('search', query)"
     >
       <img src="@/assets/icons/defaultSearch.svg" alt="search-icon" />
     </button>
     <button
       class="search__btn search__btn--location"
       aria-label="search-by-location"
+      @click="$emit('search-by-location')"
     >
       <img src="@/assets/icons/locationSearch.svg" alt="location-search-icon" />
     </button>
@@ -28,14 +29,10 @@
 <script>
 import { defineComponent, ref } from "vue";
 export default defineComponent({
-  setup(prp, ctx) {
+  setup() {
     const query = ref("");
 
-    function search() {
-      ctx.emit("search", query.value);
-    }
-
-    return { query, search };
+    return { query };
   }
 });
 </script>

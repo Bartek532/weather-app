@@ -12,7 +12,7 @@
 
 <script lang="ts">
 import { defineComponent } from "vue";
-import { BasicWeatherInfo, Timezone } from "@/types";
+import type { BasicWeatherInfo, Timezone } from "@/types";
 import HourlyWeatherItem from "./HourlyWeatherItem.vue";
 import { calculateHour } from "@/utils";
 

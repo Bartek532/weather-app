@@ -54,6 +54,7 @@ export default createStore({
     
       commit(types.SET_TIMEZONE, {countryName, hour: Number(formatted.substring(11, 13))})
     },
+
     setLoading({commit}, value: boolean){
       commit(types.SET_LOADING_STATUS, value)
     },

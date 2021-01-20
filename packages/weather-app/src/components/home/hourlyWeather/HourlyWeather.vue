@@ -31,7 +31,7 @@
 
 <script lang="ts">
 import { defineComponent, ref } from "vue";
-import { BasicWeatherInfo, Timezone } from "@/types";
+import type { BasicWeatherInfo, Timezone } from "@/types";
 import HourlyWeatherToday from "./HourlyWeatherToday.vue";
 import HourlyWeatherTomorrow from "./HourlyWeatherTomorrow.vue";
 export default defineComponent({

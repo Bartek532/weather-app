@@ -3,7 +3,7 @@
     <Loader />
   </div>
   <div v-else>
-    <Search @search="defaultSearch" />
+    <Search @search="defaultSearch" @search-by-location="searchByLocation" />
     <router-view></router-view>
     <Navbar />
   </div>
@@ -16,6 +16,7 @@ import Search from "@/components/SearchControls.vue";
 
 import { defineComponent } from "vue";
 import { useStore } from "vuex";
+import { getCityNameByCoordinates } from "@/utils";
 export default defineComponent({
   components: {
     Navbar,
@@ -25,6 +26,11 @@ export default defineComponent({
   setup() {
     const store = useStore();
     async function defaultSearch(query: string) {
+      if (!query.trim().length) {
+        store.dispatch("setError", true);
+        return;
+      }
+
       store.dispatch("setLoading", true);
       try {
         await store.dispatch("getCurrentWeather", query);
@@ -44,9 +50,30 @@ export default defineComponent({
       }
     }
 
+    //first search
     defaultSearch("London");
 
-    return { defaultSearch };
+    async function searchByLocation() {
+      store.dispatch("setLoading", true);
+
+      if (!("geolocation" in navigator)) {
+        store.dispatch("setError", true);
+        return;
+      }
+
+      await navigator.geolocation.getCurrentPosition(
+        async ({ coords }) => {
+          const { address } = await getCityNameByCoordinates(coords);
+          return await defaultSearch(address.city);
+        },
+        () => {
+          store.dispatch("setLoading", false);
+          store.dispatch("setError", true);
+        }
+      );
+    }
+
+    return { defaultSearch, searchByLocation };
   }
 });
 </script>
