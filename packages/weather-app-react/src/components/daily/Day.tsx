@@ -20,7 +20,7 @@ export const Day = ({
       >
         <img
           src={require(`../../assets/icons/weather/${icon}.svg`).default}
-          alt={`${iconDescription} icon`}
+          alt={iconDescription}
           className="day__icon"
         />
         <span className="day__day-name">{day.substring(0, 3)}</span>

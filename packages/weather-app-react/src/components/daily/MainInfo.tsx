@@ -23,7 +23,7 @@ export const MainInfo = ({ main, additional }: DailyWeatherDayType) => {
       <article className="daily__main-info__wrapper">
         <img
           src={require(`../../assets/icons/weather/${main.icon}.svg`).default}
-          alt={`${main.iconDescription} icon`}
+          alt={main.iconDescription}
           className="icon"
         />
         <span className="day-name">{main.day}</span>

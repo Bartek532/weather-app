@@ -51,8 +51,9 @@ export const calculateHour = (actualTime: number, shift: number) => {
   return (actualTime + shift) % 24;
 };
 
-export const calculateTemp = (temp: number, comma: number) => {
-  return (temp - 273.5).toFixed(comma);
+export const calculateTemp = (value: number, precision: number) => {
+  var multiplier = Math.pow(10, precision || 0);
+  return Math.round((value - 273.5) * multiplier) / multiplier;
 };
 
 export const getListOfDays = () => {

@@ -16,7 +16,7 @@ export const HourlyWeatherItem = ({
       <time className="hourly__weather__item__time">{time}:00</time>
       <img
         src={require(`../../../assets/icons/weather/${icon}.svg`).default}
-        alt={`${iconDescription} icon`}
+        alt={iconDescription}
         className="hourly__weather__item__icon"
       />
       <span className="hourly__weather__item__temp">

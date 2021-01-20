@@ -18,7 +18,7 @@ export const MainInfo = ({
       <h1 className="main-info__title">Weather forecast</h1>
       <img
         src={require(`../../assets/icons/weather/${iconCode}.svg`).default}
-        alt={`${iconDescription} icon`}
+        alt={iconDescription}
         className="main-info__icon"
       />
       <span className="main-info__temp">
