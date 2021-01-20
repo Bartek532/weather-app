@@ -1,7 +1,7 @@
 <template>
-  <div class="hourly">
+  <section class="hourly">
     <div class="hourly__navbar">
-      <span
+      <button
         :class="[
           'hourly__navbar__item',
           { 'hourly__navbar__item--active': isTodayActive }
@@ -9,8 +9,8 @@
         @click="isTodayActive = true"
       >
         Today
-      </span>
-      <span
+      </button>
+      <button
         :class="[
           'hourly__navbar__item',
           { 'hourly__navbar__item--active': !isTodayActive }
@@ -18,7 +18,7 @@
         @click="isTodayActive = false"
       >
         Tomorrow
-      </span>
+      </button>
     </div>
     <HourlyWeatherToday
       :weather="weather"
@@ -26,7 +26,7 @@
       v-if="isTodayActive"
     />
     <HourlyWeatherTomorrow :weather="weather" :time="timezone" v-else />
-  </div>
+  </section>
 </template>
 
 <script lang="ts">
@@ -70,7 +70,11 @@ export default defineComponent({
     padding: 0 10px;
     font-weight: bold;
     color: #9ca3ad;
+    font-size: 0.95rem;
+    margin: 0 2px;
     cursor: pointer;
+    border: 0 none;
+    background-color: transparent;
 
     &--active {
       color: #000;

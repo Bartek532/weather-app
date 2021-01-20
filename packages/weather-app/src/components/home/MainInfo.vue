@@ -1,16 +1,17 @@
 <template>
-  <div class="main-info">
+  <section class="main-info">
     <h1 class="main-info__title">Weather forecast</h1>
     <img
       :src="require(`../../assets/icons/weather/${iconCode}.svg`)"
-      alt="weather-icon"
+      :alt="iconDescription"
       class="main-info__icon"
     />
     <span class="main-info__temp">
+      <span className="sr-only">current temperature</span>
       {{ calculateTemp(temperature, 1) }}<sup>°</sup>
     </span>
     <span class="main-info__place"> {{ city }}, {{ country }} </span>
-  </div>
+  </section>
 </template>
 
 <script lang="ts">
@@ -33,6 +34,9 @@ export default defineComponent({
     temperature: {
       type: Number,
       required: true
+    },
+    iconDescription: {
+      type: String
     }
   },
   setup() {
@@ -78,7 +82,8 @@ export default defineComponent({
 
 @media all and (min-width: 1000px) {
   .main-info__title {
-    display: none;
+    margin: 0;
+    font-size: 0.8rem;
   }
 }
 </style>

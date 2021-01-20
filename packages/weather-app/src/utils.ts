@@ -1,6 +1,6 @@
 import axios from "axios";
 import { LOCATION_API_URL, LOCATION_API_KEY } from "./consts";
-import type { Coordinates, DailyWeatherItem } from "./types";
+import type { DailyWeatherItem } from "./types";
 
 export const getCityNameByCoordinates = async ({ latitude, longitude }: {latitude: number, longitude: number}) => {
   const { data } = await axios.get(

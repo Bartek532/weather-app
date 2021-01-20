@@ -1,5 +1,5 @@
 <template>
-  <div class="hourly__weather">
+  <article class="hourly__weather">
     <HourlyWeatherItem
       v-for="(item, index) in weather.filter((item, itemIndex) =>
         availableIndexes.includes(itemIndex)
@@ -8,8 +8,9 @@
       :time="calculateHour(time.hour, 24 - time.hour + 10 + index * 4)"
       :temp="item.temp"
       :icon="item.weather[0].icon"
+      :iconDescription="item.weather[0].description"
     />
-  </div>
+  </article>
 </template>
 
 <script lang="ts">

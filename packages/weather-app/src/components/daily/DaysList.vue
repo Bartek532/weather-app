@@ -5,6 +5,7 @@
       :key="item.dt"
       :icon="item.weather[0].icon"
       :day="getListOfDays()[index]"
+      :iconDescription="item.weather[0].icon"
       @click="$emit('change-active-day', index)"
       :class="{ 'day--active': activeDayIndex === index }"
     />
@@ -38,10 +39,18 @@ export default defineComponent({
 
 <style lang="scss" scoped>
 .days {
-  width: 100%;
+  width: 100vw;
+  max-width: 100%;
   display: flex;
   justify-content: space-around;
   padding: 10px 20px;
   list-style-type: none;
+}
+
+@media all and (min-width: 1000px) {
+  .days {
+    margin-top: 30px;
+    transform: scale(1.2);
+  }
 }
 </style>

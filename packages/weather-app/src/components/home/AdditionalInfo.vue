@@ -4,7 +4,7 @@
     <li className="additional-info__item">
       <img
         src="@/assets/icons/additional/wind.svg"
-        alt="wind-icon"
+        alt="wind"
         className="additional-info__item__icon"
       />
       <span className="additional-info__item__text">{{ wind }}m/s</span>
@@ -12,7 +12,7 @@
     <li className="additional-info__item">
       <img
         src="@/assets/icons/additional/pressure.svg"
-        alt="pressure-icon"
+        alt="pressure"
         className="additional-info__item__icon"
       />
       <span className="additional-info__item__text">{{ pressure }}hPa</span>
@@ -20,7 +20,7 @@
     <li className="additional-info__item">
       <img
         src="@/assets/icons/additional/humidity.svg"
-        alt="humidity-icon"
+        alt="humidity"
         className="additional-info__item__icon"
       />
       <span className="additional-info__item__text">{{ humidity }}%</span>
@@ -28,7 +28,7 @@
     <li className="additional-info__item">
       <img
         src="@/assets/icons/additional/cloudiness.svg"
-        alt="cloudiness-icon"
+        alt="cloudiness"
         className="additional-info__item__icon"
       />
       <span className="additional-info__item__text">{{ cloudiness }}%</span>
@@ -88,6 +88,13 @@ export default defineComponent({
       width: 27px;
       height: 27px;
     }
+  }
+}
+
+@media all and (min-width: 1000px) {
+  .additional-info {
+    transform: scale(1.1);
+    width: 105%;
   }
 }
 </style>

@@ -6,6 +6,7 @@
         :city="$store.state.currentWeather.name"
         :country="$store.state.timezone.countryName"
         :temperature="$store.state.currentWeather.main.temp"
+        :iconDescription="$store.state.currentWeather.weather[0].description"
       />
     </div>
     <div class="home__additional">

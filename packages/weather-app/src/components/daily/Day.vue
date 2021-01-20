@@ -3,7 +3,7 @@
     <button aria-label="day" class="day__btn">
       <img
         :src="require(`../../assets/icons/weather/${icon}.svg`)"
-        alt="weather-icon"
+        :alt="iconDescription"
         class="day__icon"
       />
       <span class="day__day-name">{{ day.substring(0, 3) }}</span>
@@ -22,6 +22,9 @@ export default defineComponent({
     day: {
       type: String,
       required: true
+    },
+    iconDescription: {
+      type: String
     }
   }
 });
@@ -30,7 +33,6 @@ export default defineComponent({
 <style lang="scss" scoped>
 .day {
   width: 15%;
-
   &--active &__btn {
     background-color: #5e2ce6;
     color: #fff;
@@ -60,6 +62,18 @@ export default defineComponent({
     width: 43px;
     height: 43px;
     margin-bottom: 5px;
+  }
+}
+
+@media all and (min-width: 500px) {
+  .day {
+    transform: scale(1.1);
+  }
+}
+
+@media all and (min-width: 1000px) {
+  .day {
+    margin: 0 7px;
   }
 }
 </style>

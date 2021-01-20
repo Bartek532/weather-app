@@ -1,15 +1,15 @@
 <template>
-  <div className="hourly__weather__item">
-    <span className="hourly__weather__item__time">{{ time }}:00</span>
+  <article className="hourly__weather__item">
+    <time className="hourly__weather__item__time">{{ time }}:00</time>
     <img
       :src="require(`../../../assets/icons/weather/${icon}.svg`)"
-      alt="weather-icon"
+      :alt="iconDescription"
       className="hourly__weather__item__icon"
     />
     <span className="hourly__weather__item__temp">
       {{ calculateTemp(temp, 0) }}°
     </span>
-  </div>
+  </article>
 </template>
 
 <script lang="ts">
@@ -28,6 +28,9 @@ export default defineComponent({
     icon: {
       type: String,
       required: true
+    },
+    iconDescription: {
+      type: String
     }
   },
 

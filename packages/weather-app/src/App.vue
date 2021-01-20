@@ -32,16 +32,8 @@ body {
   -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
 }
 
-.hourly__navbar__item--active {
-  font-weight: bold;
-}
-
 button:focus {
   outline: 1px solid #000;
-}
-
-label {
-  display: none;
 }
 
 #app::after {
@@ -56,34 +48,14 @@ label {
   left: 0;
 }
 
-.error__wrapper {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  flex-flow: column wrap;
-
-  &__text {
-    width: 80%;
-    max-width: 500px;
-    font-size: 1.8rem;
-    text-align: center;
-    font-weight: bold;
-    padding: 20px 0;
-
-    .not-found {
-      color: #2e5fe6;
-    }
-
-    .error {
-      color: #d11d22;
-    }
-  }
-}
-
-@media all and (min-width: 1000px) {
-  .error__text {
-    font-size: 2.2rem;
-    line-height: 2.8rem;
-  }
+.sr-only {
+  position: absolute;
+  top: auto;
+  overflow: hidden;
+  clip: rect(1px 1px 1px 1px); /* IE 6/7 */
+  clip: rect(1px, 1px, 1px, 1px);
+  width: 1px;
+  height: 1px;
+  white-space: nowrap;
 }
 </style>

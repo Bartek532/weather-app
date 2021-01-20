@@ -1,12 +1,12 @@
 <template>
-  <div class="daily__hourly-weather">
+  <section class="daily__hourly-weather">
     <HourlyWeatherItem
       v-for="(item, index) in Object.values(temp)"
       :key="index"
       :temp="Number(item)"
       :hour="startHour + diffBetweenHours * index"
     />
-  </div>
+  </section>
 </template>
 
 <script lang="ts">

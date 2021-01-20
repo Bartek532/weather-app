@@ -1,38 +1,40 @@
 <template>
-  <div class="search">
-    <label htmlFor="search">Search</label>
+  <form class="search" @submit="search">
+    <label htmlFor="search" class="sr-only">Search</label>
     <input
       id="search"
-      type="text"
+      type="search"
+      role="search"
       placeholder="Search city"
       class="search__input"
       v-model="query"
-      @keyup.enter="search"
     />
-    <button
-      class="search__btn search__btn--default"
-      aria-label="search"
-      @click="$emit('search', query)"
-    >
-      <img src="@/assets/icons/defaultSearch.svg" alt="search-icon" />
+    <button class="search__btn search__btn--default" type="submit">
+      <span className="sr-only">search</span>
+      <img src="@/assets/icons/defaultSearch.svg" alt="search" />
     </button>
     <button
       class="search__btn search__btn--location"
-      aria-label="search-by-location"
       @click="$emit('search-by-location')"
     >
-      <img src="@/assets/icons/locationSearch.svg" alt="location-search-icon" />
+      <span className="sr-only">search by location</span>
+      <img src="@/assets/icons/locationSearch.svg" alt="location-search" />
     </button>
-  </div>
+  </form>
 </template>
 
-<script>
+<script lang="ts">
 import { defineComponent, ref } from "vue";
 export default defineComponent({
-  setup() {
+  setup(prp, ctx) {
     const query = ref("");
 
-    return { query };
+    function search(e: Event) {
+      e.preventDefault();
+      ctx.emit("search", query.value);
+    }
+
+    return { query, search };
   }
 });
 </script>
@@ -46,7 +48,7 @@ export default defineComponent({
   display: flex;
   justify-content: center;
   align-items: center;
-  margin: 20px;
+  padding: 20px 0;
 
   &__input {
     background: transparent;

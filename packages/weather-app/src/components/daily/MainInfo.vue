@@ -1,18 +1,20 @@
 <template>
-  <div class="daily__main-info">
+  <section class="daily__main-info">
     <h1 class="daily__main-info__title">Weekly chart</h1>
-    <div class="daily__main-info__wrapper">
+    <article class="daily__main-info__wrapper">
       <img
         :src="require(`../../assets/icons/weather/${main.icon}.svg`)"
-        alt="weather-icon"
+        :alt="main.iconDescription"
         class="icon"
       />
       <span class="day-name">{{ main.day }}</span>
       <div class="temp">
+        <span className="sr-only">maximum daily temperature</span>
         <span class="temp__max"> {{ calculateTemp(main.maxTemp, 0) }}°</span>
+        <span className="sr-only">minimum daily temperature</span>
         <span class="temp__min"> {{ calculateTemp(main.minTemp, 0) }}°</span>
       </div>
-    </div>
+    </article>
 
     <ul class="daily__main-info__additional">
       <li class="item wind">
@@ -32,7 +34,7 @@
         <span class="item__value">{{ additional.cloudiness }}%</span>
       </li>
     </ul>
-  </div>
+  </section>
 </template>
 
 <script lang="ts">
@@ -47,6 +49,7 @@ export default defineComponent({
         maxTemp: number;
         minTemp: number;
         day: string;
+        iconDescription: string;
       },
       required: true
     },
@@ -104,7 +107,7 @@ export default defineComponent({
 
       &__max {
         color: #d11d22;
-        padding: 0 7px;
+        padding: 0 8px;
       }
 
       &__min {
@@ -129,6 +132,41 @@ export default defineComponent({
         font-weight: bold;
       }
     }
+  }
+}
+
+@media all and (min-width: 350px) {
+  .daily__main-info__additional {
+    font-size: 1rem;
+  }
+}
+
+@media all and (min-width: 1000px) {
+  .daily__main-info {
+    max-width: 350px;
+    transform: scale(1.3) translateY(-20px);
+    margin-right: 90px;
+
+    &__additional {
+      display: flex;
+      align-self: center;
+      justify-content: center;
+      align-items: space-evenly;
+      flex-flow: column wrap;
+      max-width: 230px;
+      border-left: 4px solid #5e2ce6;
+      padding-left: 25px;
+    }
+
+    &__wrapper {
+      margin: 10px 0;
+    }
+  }
+}
+
+@media all and (min-width: 1200px) {
+  .daily__main-info {
+    margin-right: 200px;
   }
 }
 </style>
