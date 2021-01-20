@@ -1,6 +1,8 @@
 <template>
-  <div v-if="$store.state.loading">
-    <Loader />
+  <Loader v-if="$store.state.loading" />
+  <div className="error__wrapper" v-else-if="$store.state.error">
+    <Search @search="defaultSearch" @search-by-location="searchByLocation" />
+    <Error />
   </div>
   <div v-else>
     <Search @search="defaultSearch" @search-by-location="searchByLocation" />
@@ -11,6 +13,7 @@
 
 <script lang="ts">
 import Navbar from "@/components/Navbar.vue";
+import Error from "@/components/Error.vue";
 import Loader from "@/components/Loader.vue";
 import Search from "@/components/SearchControls.vue";
 
@@ -21,7 +24,8 @@ export default defineComponent({
   components: {
     Navbar,
     Loader,
-    Search
+    Search,
+    Error
   },
   setup() {
     const store = useStore();
