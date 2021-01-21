@@ -50,12 +50,16 @@ export default defineComponent({
 </script>
 
 <style lang="scss" scoped>
+.daily {
+  max-width: 550px;
+}
 @media all and (min-width: 1000px) {
   .daily {
     display: flex;
     justify-content: center;
     align-items: center;
     margin: 50px 0 40px 0;
+    max-width: 100%;
 
     &__additional {
       width: 500px;

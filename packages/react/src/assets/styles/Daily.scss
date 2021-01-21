@@ -201,6 +201,9 @@
 }
 
 @media all and (min-width: 500px) {
+  .daily {
+    max-width: 550px;
+  }
   .days {
     .day {
       transform: scale(1.1);
@@ -214,6 +217,7 @@
     justify-content: center;
     align-items: center;
     margin: 50px 0 40px 0;
+    max-width: 100%;
 
     &__main-info {
       max-width: 350px;
