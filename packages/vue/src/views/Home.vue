@@ -2,23 +2,20 @@
   <div class="home">
     <div class="home__main">
       <MainInfo
-        :iconCode="$store.state.currentWeather.weather[0].icon"
-        :city="$store.state.currentWeather.name"
-        :country="$store.state.timezone.countryName"
-        :temperature="$store.state.currentWeather.main.temp"
-        :iconDescription="$store.state.currentWeather.weather[0].description"
+        :iconCode="currentWeather.weather[0].icon"
+        :city="currentWeather.name"
+        :country="timezone.countryName"
+        :temperature="currentWeather.main.temp"
+        :iconDescription="currentWeather.weather[0].description"
       />
     </div>
     <div class="home__additional">
-      <HourlyWeather
-        :weather="$store.state.dailyWeather.hourly"
-        :timezone="$store.state.timezone"
-      />
+      <HourlyWeather :weather="dailyWeather.hourly" :timezone="timezone" />
       <AdditionalInfo
-        :wind="$store.state.currentWeather.wind.speed"
-        :pressure="$store.state.currentWeather.main.pressure"
-        :humidity="$store.state.currentWeather.main.humidity"
-        :cloudiness="$store.state.currentWeather.clouds.all"
+        :wind="currentWeather.wind.speed"
+        :pressure="currentWeather.main.pressure"
+        :humidity="currentWeather.main.humidity"
+        :cloudiness="currentWeather.clouds.all"
       />
     </div>
   </div>
@@ -28,13 +25,23 @@
 import MainInfo from "@/components/home/MainInfo.vue";
 import HourlyWeather from "@/components/home/hourlyWeather/HourlyWeather.vue";
 import AdditionalInfo from "@/components/home/AdditionalInfo.vue";
-export default {
+import { useStore } from "vuex";
+import { defineComponent } from "vue";
+export default defineComponent({
   components: {
     MainInfo,
     HourlyWeather,
     AdditionalInfo
+  },
+  setup() {
+    const store = useStore();
+    const currentWeather = store.state.currentWeather;
+    const dailyWeather = store.state.dailyWeather;
+    const timezone = store.state.timezone;
+
+    return { currentWeather, dailyWeather, timezone };
   }
-};
+});
 </script>
 
 <style lang="scss" scoped>

@@ -1,6 +1,6 @@
 <template>
-  <div className="loader">
-    <div className="loader__ring">
+  <div class="loader">
+    <div class="loader__ring">
       <div></div>
       <div></div>
       <div></div>

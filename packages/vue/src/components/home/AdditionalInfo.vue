@@ -1,37 +1,41 @@
 <template>
-  <ul className="additional-info">
-    <span className="additional-info__title">Additional info</span>
-    <li className="additional-info__item">
+  <ul class="additional-info">
+    <span class="additional-info__title">Additional info</span>
+    <li class="additional-info__item">
+      <span class="sr-only">wind</span>
       <img
         src="@/assets/icons/additional/wind.svg"
         alt="wind"
-        className="additional-info__item__icon"
+        class="additional-info__item__icon"
       />
-      <span className="additional-info__item__text">{{ wind }}m/s</span>
+      <span class="additional-info__item__text">{{ wind }}m/s</span>
     </li>
-    <li className="additional-info__item">
+    <li class="additional-info__item">
+      <span class="sr-only">pressure</span>
       <img
         src="@/assets/icons/additional/pressure.svg"
         alt="pressure"
-        className="additional-info__item__icon"
+        class="additional-info__item__icon"
       />
-      <span className="additional-info__item__text">{{ pressure }}hPa</span>
+      <span class="additional-info__item__text">{{ pressure }}hPa</span>
     </li>
-    <li className="additional-info__item">
+    <li class="additional-info__item">
+      <span class="sr-only">humidity</span>
       <img
         src="@/assets/icons/additional/humidity.svg"
         alt="humidity"
-        className="additional-info__item__icon"
+        class="additional-info__item__icon"
       />
-      <span className="additional-info__item__text">{{ humidity }}%</span>
+      <span class="additional-info__item__text">{{ humidity }}%</span>
     </li>
-    <li className="additional-info__item">
+    <li class="additional-info__item">
+      <span class="sr-only">cloudiness</span>
       <img
         src="@/assets/icons/additional/cloudiness.svg"
         alt="cloudiness"
-        className="additional-info__item__icon"
+        class="additional-info__item__icon"
       />
-      <span className="additional-info__item__text">{{ cloudiness }}%</span>
+      <span class="additional-info__item__text">{{ cloudiness }}%</span>
     </li>
   </ul>
 </template>
@@ -39,6 +43,7 @@
 <script lang="ts">
 import { defineComponent } from "vue";
 export default defineComponent({
+  name: "AdditionalInfo",
   props: {
     wind: {
       type: Number,

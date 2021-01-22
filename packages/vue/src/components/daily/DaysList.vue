@@ -18,6 +18,7 @@ import type {DailyWeatherItem} from '@/types';
 import {getListOfDays} from '@/utils';
 import Day from '@/components/daily/Day.vue';
 export default defineComponent({
+    name: 'DaysList',
     components: {
         Day
     },

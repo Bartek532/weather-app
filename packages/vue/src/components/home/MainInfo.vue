@@ -7,7 +7,7 @@
       class="main-info__icon"
     />
     <span class="main-info__temp">
-      <span className="sr-only">current temperature</span>
+      <span class="sr-only">current temperature</span>
       {{ calculateTemp(temperature, 1) }}<sup>°</sup>
     </span>
     <span class="main-info__place"> {{ city }}, {{ country }} </span>
@@ -18,6 +18,7 @@
 import { defineComponent } from "vue";
 import { calculateTemp } from "@/utils";
 export default defineComponent({
+  name: "MainInfo",
   props: {
     iconCode: {
       type: String,

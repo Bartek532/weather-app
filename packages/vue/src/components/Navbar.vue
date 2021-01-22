@@ -42,10 +42,6 @@
   </nav>
 </template>
 
-<script>
-export default {};
-</script>
-
 <style lang="scss" scoped>
 nav {
   max-width: 400px;

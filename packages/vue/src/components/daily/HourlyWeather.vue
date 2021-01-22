@@ -14,6 +14,7 @@ import { defineComponent } from "vue";
 import HourlyWeatherItem from "@/components/daily/HourlyWeatherItem.vue";
 import type { Temperature } from "@/types";
 export default defineComponent({
+  name: 'HourlyWeather',
   components: {
     HourlyWeatherItem
   },

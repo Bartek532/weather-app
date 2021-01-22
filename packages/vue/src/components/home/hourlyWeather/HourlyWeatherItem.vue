@@ -1,12 +1,12 @@
 <template>
-  <article className="hourly__weather__item">
-    <time className="hourly__weather__item__time">{{ time }}:00</time>
+  <article class="hourly__weather__item">
+    <time class="hourly__weather__item__time">{{ time }}:00</time>
     <img
       :src="require(`../../../assets/icons/weather/${icon}.svg`)"
       :alt="iconDescription"
-      className="hourly__weather__item__icon"
+      class="hourly__weather__item__icon"
     />
-    <span className="hourly__weather__item__temp">
+    <span class="hourly__weather__item__temp">
       {{ calculateTemp(temp, 0) }}°
     </span>
   </article>
@@ -16,6 +16,7 @@
 import { defineComponent } from "vue";
 import { calculateTemp } from "@/utils";
 export default defineComponent({
+  name: "HourlyWeatherItem",
   props: {
     time: {
       type: Number,

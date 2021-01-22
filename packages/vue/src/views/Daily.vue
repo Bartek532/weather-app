@@ -9,7 +9,7 @@
     <div class="daily__additional">
       <HourlyWeather :temp="selectedDayWeatherInfo.temperature" />
       <DaysList
-        :weather="$store.state.dailyWeather.daily"
+        :weather="dailyWeather"
         :activeDayIndex="currentSelectedDayIndex"
         @change-active-day="currentSelectedDayIndex = $event"
       />
@@ -33,17 +33,19 @@ export default defineComponent({
   setup() {
     const store = useStore();
     const currentSelectedDayIndex = ref(0);
+    const dailyWeather = store.state.dailyWeather.daily;
 
     const selectedDayWeatherInfo = computed(() =>
       getWeatherInfoAboutSelectedDay(
         currentSelectedDayIndex.value,
-        store.state.dailyWeather.daily
+        dailyWeather
       )
     );
 
     return {
       currentSelectedDayIndex,
-      selectedDayWeatherInfo
+      selectedDayWeatherInfo,
+      dailyWeather
     };
   }
 });

@@ -1,7 +1,7 @@
 <template>
-  <article className="daily__hourly-weather__item">
-    <span className="item__temp">{{ calculateTemp(temp, 0) }}°</span>
-    <time className="item__hour">{{ hour }}:00</time>
+  <article class="daily__hourly-weather__item">
+    <span class="item__temp">{{ calculateTemp(temp, 0) }}°</span>
+    <time class="item__hour">{{ hour }}:00</time>
   </article>
 </template>
 
@@ -9,6 +9,7 @@
 import { defineComponent } from "vue";
 import { calculateTemp } from "@/utils";
 export default defineComponent({
+  name: "HourlyWeatherItem",
   props: {
     hour: { type: Number, required: true },
     temp: { type: Number, required: true }

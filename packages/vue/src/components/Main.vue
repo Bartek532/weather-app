@@ -1,6 +1,6 @@
 <template>
   <Loader v-if="$store.state.loading" />
-  <div className="error__wrapper" v-else-if="$store.state.error">
+  <div class="error__wrapper" v-else-if="$store.state.error">
     <Search @search="defaultSearch" @search-by-location="searchByLocation" />
     <Error />
   </div>
@@ -21,6 +21,7 @@ import { defineComponent } from "vue";
 import { useStore } from "vuex";
 import { getCityNameByCoordinates } from "@/utils";
 export default defineComponent({
+  name: "Main",
   components: {
     Navbar,
     Loader,

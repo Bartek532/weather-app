@@ -9,9 +9,9 @@
       />
       <span class="day-name">{{ main.day }}</span>
       <div class="temp">
-        <span className="sr-only">maximum daily temperature</span>
+        <span class="sr-only">maximum daily temperature</span>
         <span class="temp__max"> {{ calculateTemp(main.maxTemp, 0) }}°</span>
-        <span className="sr-only">minimum daily temperature</span>
+        <span class="sr-only">minimum daily temperature</span>
         <span class="temp__min"> {{ calculateTemp(main.minTemp, 0) }}°</span>
       </div>
     </article>
@@ -42,6 +42,7 @@ import { defineComponent } from "vue";
 import { calculateTemp } from "@/utils";
 
 export default defineComponent({
+  name: "MainInfo",
   props: {
     main: {
       type: Object as () => {

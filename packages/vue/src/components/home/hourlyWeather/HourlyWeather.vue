@@ -35,6 +35,7 @@ import type { BasicWeatherInfo, Timezone } from "@/types";
 import HourlyWeatherToday from "./HourlyWeatherToday.vue";
 import HourlyWeatherTomorrow from "./HourlyWeatherTomorrow.vue";
 export default defineComponent({
+  name: 'HourlyWeather',
   components: {
     HourlyWeatherToday,
     HourlyWeatherTomorrow

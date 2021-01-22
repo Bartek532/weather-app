@@ -10,14 +10,14 @@
       v-model="query"
     />
     <button class="search__btn search__btn--default" type="submit">
-      <span className="sr-only">search</span>
+      <span class="sr-only">search</span>
       <img src="@/assets/icons/defaultSearch.svg" alt="search" />
     </button>
     <button
       class="search__btn search__btn--location"
       @click="$emit('search-by-location')"
     >
-      <span className="sr-only">search by location</span>
+      <span class="sr-only">search by location</span>
       <img src="@/assets/icons/locationSearch.svg" alt="location-search" />
     </button>
   </form>
@@ -26,6 +26,7 @@
 <script lang="ts">
 import { defineComponent, ref } from "vue";
 export default defineComponent({
+  name: "SearchControls",
   setup(prp, ctx) {
     const query = ref("");
 

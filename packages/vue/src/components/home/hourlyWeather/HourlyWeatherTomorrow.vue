@@ -20,6 +20,7 @@ import HourlyWeatherItem from "./HourlyWeatherItem.vue";
 import { calculateHour } from "@/utils";
 
 export default defineComponent({
+  name: 'HourlyWeatherTomorrow',
   components: {
     HourlyWeatherItem
   },

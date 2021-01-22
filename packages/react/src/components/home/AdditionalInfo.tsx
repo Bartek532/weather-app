@@ -20,22 +20,22 @@ export const AdditionalInfo = ({
     <ul className="additional-info">
       <span className="additional-info__title">Additional info</span>
       <li className="additional-info__item">
-        <span className="sr-only">wind icon</span>
+        <span className="sr-only">wind</span>
         <WindIcon className="additional-info__item__icon" />
         <span className="additional-info__item__text">{wind}m/s</span>
       </li>
       <li className="additional-info__item">
-        <span className="sr-only">pressure icon</span>
+        <span className="sr-only">pressure</span>
         <PressureIcon className="additional-info__item__icon" />
         <span className="additional-info__item__text">{pressure}hPa</span>
       </li>
       <li className="additional-info__item">
-        <span className="sr-only">humidity icon</span>
+        <span className="sr-only">humidity</span>
         <HumidityIcon className="additional-info__item__icon" />
         <span className="additional-info__item__text">{humidity}%</span>
       </li>
       <li className="additional-info__item">
-        <span className="sr-only">cloudiness icon</span>
+        <span className="sr-only">cloudiness</span>
         <CloudIcon className="additional-info__item__icon" />
         <span className="additional-info__item__text">{cloudiness}%</span>
       </li>
