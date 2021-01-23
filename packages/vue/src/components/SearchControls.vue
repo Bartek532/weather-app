@@ -61,6 +61,7 @@ export default defineComponent({
     max-width: 400px;
     outline: 0 none;
     margin-right: 20px;
+    appearance: none;
 
     &:focus {
       box-shadow: 0 3px 3px -1px gray;
