@@ -10,6 +10,16 @@ This is weather app. But it isn't normal weather app. It includes daily and hour
 
 ## Tech/framework used 🧰
 
+- Common
+
+| Tech                                                  | Description                               |
+| ----------------------------------------------------- | ----------------------------------------- |
+| [Eslint](https://eslint.org/)                         | Javascript Linter                         |
+| [Prettier](https://prettier.io/)                      | Code formatter                            |
+| [Lerna](https://lerna.js.org)                  | Tool for managing projects with multiple packages|
+
+<br />
+
 - React
 
 | Tech                                                  | Description                               |
@@ -20,8 +30,6 @@ This is weather app. But it isn't normal weather app. It includes daily and hour
 | [Context API](reactjs.org/docs/context.html)          | Alternative to React Redux                |
 | [Reach Router](https://reach.tech/router)             | Declarative routing for React             |
 | [CSS Modules](https://github.com/css-modules/css-modules)| Styles convention in React             |
-| [Eslint](https://eslint.org/)                         | Javascript Linter                         |
-| [Prettier](https://prettier.io/)                      | Code formatter                            |
 
 <br />
 
@@ -34,8 +42,6 @@ This is weather app. But it isn't normal weather app. It includes daily and hour
 | [Vue](https://vuejs.org)                              | Progressive JavaScript Framework          |
 | [Vuex](vuex.vuejs.org)                                | State management for Vue.js               |
 | [Vue Router](https://router.vuejs.org)                | Official router for Vue.js                |
-| [Eslint](https://eslint.org/)                         | Javascript Linter                         |
-| [Prettier](https://prettier.io/)                      | Code formatter                            |
 
 ## Installation 💿
 
