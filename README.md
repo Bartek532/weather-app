@@ -2,9 +2,7 @@
 Weather App ☁️
 </h1>
 
-<br>
-
-<br>
+<br />
 
 ## Project Overview 🎨
 
@@ -24,6 +22,8 @@ This is weather app. But it isn't normal weather app. It includes daily and hour
 | [CSS Modules](https://github.com/css-modules/css-modules)| Styles convention in React             |
 | [Eslint](https://eslint.org/)                         | Javascript Linter                         |
 | [Prettier](https://prettier.io/)                      | Code formatter                            |
+
+<br />
 
 - Vue
 
