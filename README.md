@@ -29,7 +29,6 @@ This is weather app. But it isn't normal weather app. It includes daily and hour
 | [React](https://reactjs.org/)                         | Library for building user interfaces      |
 | [Context API](reactjs.org/docs/context.html)          | Alternative to React Redux                |
 | [Reach Router](https://reach.tech/router)             | Declarative routing for React             |
-| [CSS Modules](https://github.com/css-modules/css-modules)| Styles convention in React             |
 
 <br />
 
