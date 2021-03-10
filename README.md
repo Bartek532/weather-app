@@ -27,8 +27,8 @@ This is weather app. But it isn't normal weather app. It includes daily and hour
 | [SCSS](https://sass-lang.com)                         | CSS with superpowers                      |
 | [Typescript](https://www.typescriptlang.org/)         | Javascript superset language              |
 | [React](https://reactjs.org/)                         | Library for building user interfaces      |
-| [Context API](reactjs.org/docs/context.html)          | Alternative to React Redux                |
-| [Reach Router](https://reach.tech/router)             | Declarative routing for React             |
+| [Context API](https://reactjs.org/docs/context.html)  | Alternative to React Redux                |
+| [React Router](https://reactrouter.com)               | Declarative routing for React             |
 
 <br />
 
@@ -42,11 +42,17 @@ This is weather app. But it isn't normal weather app. It includes daily and hour
 | [Vuex](vuex.vuejs.org)                                | State management for Vue.js               |
 | [Vue Router](https://router.vuejs.org)                | Official router for Vue.js                |
 
+## Performance 💨
+
+<img src="https://i.ibb.co/4M9c7sx/weather-app.png" alt="weather app performance" />
+
 ## Installation 💿
 
 ```bash
 
 git clone https://github.com/Bartek532/weather-app.git
+
+cd packages/react or cd packages/vue
 
 npm install
 
