@@ -38,7 +38,7 @@ This is weather app. But it isn't normal weather app. It includes daily and hour
 | ----------------------------------------------------- | ----------------------------------------- |
 | [SCSS](https://sass-lang.com)                         | CSS with superpowers                      |
 | [Typescript](https://www.typescriptlang.org/)         | Javascript superset language              |
-| [Vue](https://vuejs.org)                              | Progressive JavaScript Framework          |
+| [Vue 3](https://vuejs.org)                              | Progressive JavaScript Framework          |
 | [Vuex](vuex.vuejs.org)                                | State management for Vue.js               |
 | [Vue Router](https://router.vuejs.org)                | Official router for Vue.js                |
 
