@@ -5,19 +5,19 @@ const routes: Array<RouteRecordRaw> = [
   {
     path: "/",
     name: "Home",
-    component: Home
+    component: Home,
   },
   {
     path: "/daily",
     name: "Daily",
     component: () =>
-      import(/* webpackChunkName: "daily" */ "../views/Daily.vue")
-  }
+      import(/* webpackChunkName: "daily" */ "../views/Daily.vue"),
+  },
 ];
 
 const router = createRouter({
   history: createWebHistory(process.env.BASE_URL),
-  routes
+  routes,
 });
 
 export default router;
