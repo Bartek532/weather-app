@@ -20,44 +20,34 @@ describe("search for the weather", () => {
     expect(screen.getByText(/weather forecast/i)).toBeInTheDocument();
     expect(screen.getByText(/london/i)).toBeInTheDocument();
   });
-  /*
-  it("should not call search func when input is empty", () => {
-    const { getByTestId } = render(
-      <SearchControls
-        search={mockedSearchFunc}
-        searchByLocation={mockedSearchByLocationFunc}
-      />
-    );
+
+  it("not search when input is empty", async () => {
+    const { getByTestId, queryByText } = render(<App />);
+
+    await waitForElementToBeRemoved(() => screen.queryByText(/loading/i), {
+      timeout: 7000,
+    });
 
     userEvent.click(getByTestId("search-btn"));
-    expect(mockedSearchFunc).toBeCalledTimes(0);
+    const loader = queryByText(/loading/i);
+    expect(loader).not.toBeInTheDocument();
   });
 
-  it("should call search func when input is not empty", () => {
-    const { getByTestId, getByLabelText } = render(
-      <SearchControls
-        search={mockedSearchFunc}
-        searchByLocation={mockedSearchByLocationFunc}
-      />
-    );
+  it("search when input is not empty", async () => {
+    const { getByTestId, getByLabelText } = render(<App />);
 
-    const searchInput = getByLabelText("Search");
+    await waitForElementToBeRemoved(() => screen.queryByText(/loading/i), {
+      timeout: 7000,
+    });
 
-    //search by clicking button
-    userEvent.type(searchInput, "London");
+    const searchInput = getByLabelText(/search/i);
+
+    userEvent.type(searchInput, "Tokyo");
     userEvent.click(getByTestId("search-btn"));
-    expect(mockedSearchFunc).toHaveBeenCalledTimes(1);
-    expect(mockedSearchFunc).toHaveBeenCalledWith("London");
-
-    expect(screen.getByText(/london/i)).toBeInTheDocument();
-
-    userEvent.clear(searchInput);
-
-    //search by hitting enter
-    userEvent.type(searchInput, "Tokio");
-    userEvent.type(searchInput, "{enter}");
-    expect(mockedSearchFunc).toHaveBeenCalledTimes(2);
-    expect(mockedSearchFunc).toHaveBeenCalledWith("Tokio");
+    expect(screen.queryByText(/loading/i)).toBeInTheDocument();
+    await waitForElementToBeRemoved(() => screen.queryByText(/loading/i), {
+      timeout: 7000,
+    });
+    expect(screen.getByText(/tokyo/i)).toBeInTheDocument();
   });
-  */
 });
