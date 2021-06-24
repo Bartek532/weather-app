@@ -2,6 +2,7 @@ import {
   render,
   screen,
   waitForElementToBeRemoved,
+  waitFor,
 } from "@testing-library/react";
 import userEvent from "@testing-library/user-event";
 import App from "../App";
@@ -49,5 +50,14 @@ describe("search for the weather", () => {
       timeout: 7000,
     });
     expect(screen.getByText(/tokyo/i)).toBeInTheDocument();
+  });
+
+  it("renders an error message when error occurs", async () => {
+    jest.mock("../utils");
+
+    render(<App />);
+    expect(screen.queryByText(/loading/i)).toBeInTheDocument();
+
+    await waitFor(() => screen.queryByText(/error/i));
   });
 });
