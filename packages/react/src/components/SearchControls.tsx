@@ -4,7 +4,7 @@ import { ChangeEvent, useState } from "react";
 
 export const SearchControls = ({
   search,
-  searchByLocation
+  searchByLocation,
 }: {
   search: (city: string) => Promise<void>;
   searchByLocation: () => Promise<void>;
@@ -17,6 +17,9 @@ export const SearchControls = ({
 
   const handleSearch = (e: React.FormEvent<EventTarget>) => {
     e.preventDefault();
+    if (!query.trim().length) {
+      return;
+    }
     return search(query);
   };
 
@@ -34,7 +37,11 @@ export const SearchControls = ({
         value={query}
         onChange={handleQueryUpdate}
       />
-      <button className="search__btn search__btn--default" type="submit">
+      <button
+        className="search__btn search__btn--default"
+        type="submit"
+        data-testid="search-btn"
+      >
         <span className="sr-only">search</span>
         <SearchIcon />
       </button>

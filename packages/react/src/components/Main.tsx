@@ -13,7 +13,7 @@ import {
   getCurrentWeather,
   getDailyWeather,
   getTimezone,
-  getCityNameByCoordinates
+  getCityNameByCoordinates,
 } from "../utils";
 
 export const Main = memo(() => {
@@ -25,15 +25,10 @@ export const Main = memo(() => {
     setCurrentWeather,
     setDailyWeather,
     setTimezone,
-    setCurrentSelectedDayIndex
+    setCurrentSelectedDayIndex,
   } = useContext(WeatherContext);
 
   const search = async (city: string) => {
-    if (!city.trim().length) {
-      setError(true);
-      return;
-    }
-
     setLoading(true);
     try {
       const currentWeather = await getCurrentWeather(city);
