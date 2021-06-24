@@ -8,12 +8,13 @@ import { getWeatherInfoAboutSelectedDay } from "../utils";
 export const Daily = memo(() => {
   const { dailyWeather, currentSelectedDayIndex } = useContext(WeatherContext);
 
-  const [
-    { mainData, additionalData, temperature },
-    setSelectedDayInfo
-  ] = useState(
-    getWeatherInfoAboutSelectedDay(currentSelectedDayIndex, dailyWeather!.daily)
-  );
+  const [{ mainData, additionalData, temperature }, setSelectedDayInfo] =
+    useState(
+      getWeatherInfoAboutSelectedDay(
+        currentSelectedDayIndex,
+        dailyWeather!.daily
+      )
+    );
 
   useEffect(() => {
     setSelectedDayInfo(
