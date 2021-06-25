@@ -23,7 +23,7 @@ test("full app rendering/navigating", async () => {
   //render home view
   expect(screen.getByText(/weather forecast/i)).toBeInTheDocument();
 
-  userEvent.click(screen.getByTestId("daily-link"));
+  userEvent.click(screen.getByRole("link", { name: /daily/i }));
 
   //render daily view
   expect(screen.getByText(/weekly chart/i)).toBeInTheDocument();

@@ -37,11 +37,7 @@ export const SearchControls = ({
         value={query}
         onChange={handleQueryUpdate}
       />
-      <button
-        className="search__btn search__btn--default"
-        type="submit"
-        data-testid="search-btn"
-      >
+      <button className="search__btn search__btn--default" type="submit">
         <span className="sr-only">search</span>
         <SearchIcon />
       </button>

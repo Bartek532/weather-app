@@ -23,19 +23,19 @@ describe("search for the weather", () => {
   });
 
   it("not search when input is empty", async () => {
-    const { getByTestId, queryByText } = render(<App />);
+    const { getByRole, queryByText } = render(<App />);
 
     await waitForElementToBeRemoved(() => screen.queryByText(/loading/i), {
       timeout: 7000,
     });
 
-    userEvent.click(getByTestId("search-btn"));
+    userEvent.click(getByRole("button", { name: /defaultsearch/i }));
     const loader = queryByText(/loading/i);
     expect(loader).not.toBeInTheDocument();
   });
 
   it("search when input is not empty", async () => {
-    const { getByTestId, getByLabelText } = render(<App />);
+    const { getByRole, getByLabelText } = render(<App />);
 
     await waitForElementToBeRemoved(() => screen.queryByText(/loading/i), {
       timeout: 7000,
@@ -44,7 +44,7 @@ describe("search for the weather", () => {
     const searchInput = getByLabelText(/search/i);
 
     userEvent.type(searchInput, "Tokyo");
-    userEvent.click(getByTestId("search-btn"));
+    userEvent.click(getByRole("button", { name: /defaultsearch/i }));
     expect(screen.queryByText(/loading/i)).toBeInTheDocument();
     await waitForElementToBeRemoved(() => screen.queryByText(/loading/i), {
       timeout: 7000,
