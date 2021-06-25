@@ -7,7 +7,7 @@ import {
 import userEvent from "@testing-library/user-event";
 import App from "../App";
 
-describe("search for the weather", () => {
+describe("search for the weather by query", () => {
   it("search for default location on page load", async () => {
     const { getByText } = render(<App />);
 
@@ -51,7 +51,6 @@ describe("search for the weather", () => {
     });
     expect(screen.getByText(/tokyo/i)).toBeInTheDocument();
   });
-
   it("renders an error message when error occurs", async () => {
     jest.mock("../utils");
 
@@ -59,5 +58,48 @@ describe("search for the weather", () => {
     expect(screen.queryByText(/loading/i)).toBeInTheDocument();
 
     await waitFor(() => screen.queryByText(/error/i));
+  });
+
+  it("search by location, when location button is pressed", async () => {
+    const mockGeolocation = {
+      getCurrentPosition: jest.fn().mockImplementationOnce(success =>
+        Promise.resolve(
+          success({
+            coords: {
+              latitude: 52.237049,
+              longitude: 21.017532,
+            },
+          })
+        )
+      ),
+    };
+    Object.defineProperty(global.navigator, "geolocation", {
+      value: mockGeolocation,
+    });
+
+    render(<App />);
+
+    await waitForElementToBeRemoved(() => screen.queryByText(/loading/i), {
+      timeout: 7000,
+    });
+
+    Object.defineProperty(global.navigator, "permissions", {
+      value: {
+        query: jest
+          .fn()
+          .mockImplementationOnce(() => Promise.resolve({ state: "granted" })),
+      },
+    });
+
+    userEvent.click(
+      screen.getByRole("button", { name: /search by location/i })
+    );
+
+    expect(screen.queryByText(/loading/i)).toBeInTheDocument();
+    await waitForElementToBeRemoved(() => screen.queryByText(/loading/i), {
+      timeout: 7000,
+    });
+    expect(screen.getByText(/weather/i)).toBeInTheDocument();
+    expect(screen.getByText(/warsaw/i)).toBeInTheDocument();
   });
 });

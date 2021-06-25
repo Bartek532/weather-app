@@ -45,7 +45,7 @@ export const Main = memo(() => {
 
       setError(false);
       setCurrentSelectedDayIndex(0);
-    } catch {
+    } catch (e) {
       setError(true);
     }
     setLoading(false);
