@@ -3,7 +3,7 @@ export const Day = ({
   day,
   iconDescription,
   changeDay,
-  isActive
+  isActive,
 }: {
   icon: string;
   day: string;
@@ -16,7 +16,7 @@ export const Day = ({
       <button
         className={`day__btn ${isActive ? "day__btn--active" : null}`}
         onClick={() => changeDay(day)}
-        aria-label="day"
+        aria-label={day}
       >
         <img
           src={require(`../../assets/icons/weather/${icon}.svg`).default}

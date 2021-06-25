@@ -4,19 +4,20 @@ import { calculateHour } from "../../../utils";
 
 export const HourlyWeatherTomorrow = ({
   weather,
-  time
+  time,
 }: {
   weather: BasicWeatherInfo[];
   time: Timezone;
 }) => {
   return (
     <article className="hourly__weather">
+      <h3 className="sr-only">Hourly weather tomorrow</h3>
       {weather.map((item, index) => {
         if (
           [
             24 - time.hour + 9,
             24 - time.hour + 13,
-            24 - time.hour + 17
+            24 - time.hour + 17,
           ].includes(index)
         ) {
           return (

@@ -4,13 +4,14 @@ import { calculateHour } from "../../../utils";
 
 export const HourlyWeatherToday = ({
   weather,
-  time
+  time,
 }: {
   weather: BasicWeatherInfo[];
   time: Timezone;
 }) => {
   return (
     <article className="hourly__weather">
+      <h3 className="sr-only">Hourly weather today</h3>
       {weather.slice(1, 4).map((item, index) => {
         return (
           <HourlyWeatherItem

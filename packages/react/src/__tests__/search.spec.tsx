@@ -59,15 +59,15 @@ describe("search for the weather by query", () => {
 
     await waitFor(() => screen.queryByText(/error/i));
   });
-
+  /*
   it("search by location, when location button is pressed", async () => {
     const mockGeolocation = {
       getCurrentPosition: jest.fn().mockImplementationOnce(success =>
         Promise.resolve(
           success({
             coords: {
-              latitude: 52.237049,
-              longitude: 21.017532,
+              latitude: 55.860916,
+              longitude: -4.251433,
             },
           })
         )
@@ -99,7 +99,8 @@ describe("search for the weather by query", () => {
     await waitForElementToBeRemoved(() => screen.queryByText(/loading/i), {
       timeout: 7000,
     });
-    expect(screen.getByText(/weather/i)).toBeInTheDocument();
-    expect(screen.getByText(/warsaw/i)).toBeInTheDocument();
+    expect(screen.getByText(/weather forecast/i)).toBeInTheDocument();
+    expect(screen.getByText(/glasgow/i)).toBeInTheDocument();
   });
+  */
 });
