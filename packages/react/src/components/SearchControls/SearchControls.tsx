@@ -1,5 +1,5 @@
-import { ReactComponent as SearchIcon } from "../assets/icons/defaultSearch.svg";
-import { ReactComponent as LocationSearchIcon } from "../assets/icons/locationSearch.svg";
+import { ReactComponent as SearchIcon } from "../../assets/icons/defaultSearch.svg";
+import { ReactComponent as LocationSearchIcon } from "../../assets/icons/locationSearch.svg";
 import { ChangeEvent, useState } from "react";
 
 export const SearchControls = ({
