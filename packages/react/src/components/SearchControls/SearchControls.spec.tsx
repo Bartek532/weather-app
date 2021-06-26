@@ -1,4 +1,4 @@
-import { render, waitFor, screen } from "@testing-library/react";
+import { render } from "@testing-library/react";
 import userEvent from "@testing-library/user-event";
 import { SearchControls } from "./SearchControls";
 
@@ -12,8 +12,6 @@ test("should not trigger search func when input is empty", async () => {
       searchByLocation={mockedSearchByLocationFunc}
     />
   );
-
-  await waitFor(() => screen.getByText(/loading/i));
 
   userEvent.click(getByRole("button", { name: /defaultSearch/i }));
   expect(mockedSearchFunc).not.toBeCalled();

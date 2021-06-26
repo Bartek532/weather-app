@@ -1,8 +1,8 @@
-import { SearchControls } from "./SearchControls";
+import { SearchControls } from "./SearchControls/SearchControls";
 import { Home } from "../views/Home";
 import { Daily } from "../views/Daily";
 import { Loader } from "./Loader";
-import { Navbar } from "./Navbar";
+import { Navbar } from "./Navbar/Navbar";
 import { Error } from "./Error";
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 
