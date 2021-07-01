@@ -16,7 +16,7 @@ test("full app rendering/navigating", async () => {
     </Router>
   );
 
-  await waitForElementToBeRemoved(() => screen.queryByText(/loading/i), {
+  await waitForElementToBeRemoved(() => screen.getByText(/loading/i), {
     timeout: 7000,
   });
 
