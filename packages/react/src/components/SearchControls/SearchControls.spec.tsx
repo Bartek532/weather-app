@@ -1,4 +1,4 @@
-import { render } from "@testing-library/react";
+import { render, screen } from "@testing-library/react";
 import userEvent from "@testing-library/user-event";
 import { SearchControls } from "./SearchControls";
 
@@ -6,30 +6,30 @@ const mockedSearchFunc = jest.fn((city: string) => Promise.resolve());
 const mockedSearchByLocationFunc = jest.fn(() => Promise.resolve());
 
 test("should not trigger search func when input is empty", async () => {
-  const { getByRole } = render(
+  render(
     <SearchControls
       search={mockedSearchFunc}
       searchByLocation={mockedSearchByLocationFunc}
     />
   );
 
-  userEvent.click(getByRole("button", { name: /defaultSearch/i }));
+  userEvent.click(screen.getByRole("button", { name: /defaultSearch/i }));
   expect(mockedSearchFunc).not.toBeCalled();
 });
 
 test("should trigger search func when input is not empty", () => {
-  const { getByRole, getByLabelText } = render(
+  render(
     <SearchControls
       search={mockedSearchFunc}
       searchByLocation={mockedSearchByLocationFunc}
     />
   );
 
-  const searchInput = getByLabelText(/search/i);
+  const searchInput = screen.getByLabelText(/search/i);
 
   //by pressing button
   userEvent.type(searchInput, "Tokyo");
-  userEvent.click(getByRole("button", { name: /defaultSearch/i }));
+  userEvent.click(screen.getByRole("button", { name: /defaultSearch/i }));
   expect(mockedSearchFunc).toBeCalled();
   expect(mockedSearchFunc).toBeCalledWith("Tokyo");
 
@@ -42,13 +42,13 @@ test("should trigger search func when input is not empty", () => {
 });
 
 test("should trigger search by location func when location button is pressed", () => {
-  const { getByRole } = render(
+  render(
     <SearchControls
       search={mockedSearchFunc}
       searchByLocation={mockedSearchByLocationFunc}
     />
   );
 
-  userEvent.click(getByRole("button", { name: /locationSearch/i }));
+  userEvent.click(screen.getByRole("button", { name: /locationSearch/i }));
   expect(mockedSearchByLocationFunc).toBeCalled();
 });
