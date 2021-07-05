@@ -15,7 +15,7 @@
 import Navbar from "@/components/Navbar.vue";
 import Error from "@/components/Error.vue";
 import Loader from "@/components/Loader.vue";
-import Search from "@/components/SearchControls.vue";
+import Search from "@/components/SearchControls/SearchControls.vue";
 
 import { defineComponent } from "vue";
 import { useStore } from "vuex";
@@ -26,7 +26,7 @@ export default defineComponent({
     Navbar,
     Loader,
     Search,
-    Error
+    Error,
   },
   setup() {
     const store = useStore();
@@ -43,7 +43,7 @@ export default defineComponent({
         const { coord } = store.state.currentWeather;
         await store.dispatch("getDailyWeather", {
           lat: coord.lat,
-          lon: coord.lon
+          lon: coord.lon,
         });
         await store.dispatch("getTimezone", { lat: coord.lat, lon: coord.lon });
 
@@ -79,6 +79,6 @@ export default defineComponent({
     }
 
     return { defaultSearch, searchByLocation };
-  }
+  },
 });
 </script>
