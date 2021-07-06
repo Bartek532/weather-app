@@ -47,11 +47,11 @@
     "transform": {
       "^[^.]+.vue$": "vue-jest",
       "^.+\\.js$": "babel-jest",
-      "\\.ts$": "ts-jest"
+      "\\.ts$": "ts-jest",
+      "^.+\\.svg$": "<rootDir>/svgTransform.js"
+    },
+    "moduleNameMapper": {
+      "@/(.*)": "<rootDir>/src/$1"
     }
-  },
-  "moduleDirectories": [
-    "node_modules",
-    "src"
-  ]
+  }
 }

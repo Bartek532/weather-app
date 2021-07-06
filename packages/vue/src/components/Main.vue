@@ -12,7 +12,7 @@
 </template>
 
 <script lang="ts">
-import Navbar from "@/components/Navbar.vue";
+import Navbar from "@/components/Navbar/Navbar.vue";
 import Error from "@/components/Error.vue";
 import Loader from "@/components/Loader.vue";
 import Search from "@/components/SearchControls/SearchControls.vue";
