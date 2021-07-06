@@ -13,6 +13,6 @@ test("should not trigger search func when input is empty", async () => {
     },
   });
 
-  userEvent.click(screen.getByRole("button", { name: /defaultSearch/i }));
+  userEvent.click(screen.getByRole("button", { name: /search search/i }));
   expect(mockedSearchFunc).not.toBeCalled();
 });

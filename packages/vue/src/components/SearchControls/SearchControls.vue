@@ -11,14 +11,14 @@
     />
     <button class="search__btn search__btn--default" type="submit">
       <span class="sr-only">search</span>
-      <img src="@/assets/icons/defaultSearch.svg" alt="search" />
+      <img src="assets/icons/defaultSearch.svg" alt="search" />
     </button>
     <button
       class="search__btn search__btn--location"
       @click="$emit('search-by-location')"
     >
       <span class="sr-only">search by location</span>
-      <img src="@/assets/icons/locationSearch.svg" alt="location-search" />
+      <img src="assets/icons/locationSearch.svg" alt="location-search" />
     </button>
   </form>
 </template>
@@ -36,7 +36,7 @@ export default defineComponent({
     }
 
     return { query, search };
-  }
+  },
 });
 </script>
 
