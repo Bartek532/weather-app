@@ -9,7 +9,7 @@ export default createStore({
     loading: false,
     error: false,
     currentWeather: {},
-    dailyWeather: {},
+    dailyWeather: { daily: {} },
     timezone: {}
   },
   mutations: {

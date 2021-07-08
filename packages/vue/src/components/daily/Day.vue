@@ -1,6 +1,10 @@
 <template>
   <li class="day">
-    <button aria-label="day" class="day__btn">
+    <button
+      :aria-label="day"
+      @click="$emit('change-active-day', index)"
+      :class="[{ 'day__btn--active': activeDayIndex === index }, 'day__btn']"
+    >
       <img
         :src="require(`../../assets/icons/weather/${icon}.svg`)"
         :alt="iconDescription"
@@ -18,26 +22,30 @@ export default defineComponent({
   props: {
     icon: {
       type: String,
-      required: true
+      required: true,
     },
     day: {
       type: String,
-      required: true
+      required: true,
     },
     iconDescription: {
-      type: String
-    }
-  }
+      type: String,
+    },
+    index: {
+      type: Number,
+      required: true,
+    },
+    activeDayIndex: {
+      type: Number,
+      default: 0,
+    },
+  },
 });
 </script>
 
 <style lang="scss" scoped>
 .day {
   width: 15%;
-  &--active &__btn {
-    background-color: #5e2ce6;
-    color: #fff;
-  }
 
   &__btn {
     width: 100%;
@@ -56,6 +64,11 @@ export default defineComponent({
 
     &:focus {
       box-shadow: 0 0 0.6pt 0.6pt #5e2ce6;
+    }
+
+    &--active {
+      background-color: #5e2ce6;
+      color: #fff;
     }
   }
 
