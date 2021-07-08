@@ -2,8 +2,8 @@ import {
   render,
   screen,
   waitForElementToBeRemoved,
+  fireEvent,
 } from "@testing-library/vue";
-import userEvent from "@testing-library/user-event";
 import App from "@/App.vue";
 import Daily from "@/views/Daily.vue";
 import Home from "@/views/Home.vue";
@@ -30,7 +30,7 @@ test("full app rendering/navigating", async () => {
   //render home view
   expect(screen.getByText(/weather forecast/i)).toBeInTheDocument();
 
-  userEvent.click(screen.getByRole("link", { name: /daily/i }));
+  await fireEvent.click(screen.getByRole("link", { name: /daily/i }));
 
   //render daily view
   expect(screen.getByText(/weekly chart/i)).toBeInTheDocument();
