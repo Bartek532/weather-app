@@ -20,24 +20,24 @@ export default defineComponent({
   props: {
     time: {
       type: Number,
-      required: true
+      required: true,
     },
     temp: {
       type: Number,
-      required: true
+      required: true,
     },
     icon: {
       type: String,
-      required: true
+      required: true,
     },
     iconDescription: {
-      type: String
-    }
+      type: String,
+    },
   },
 
   setup() {
     return { calculateTemp };
-  }
+  },
 });
 </script>
 
@@ -64,36 +64,36 @@ export default defineComponent({
     z-index: -1;
   }
 
-  &:first-child {
-    background: #f59518;
-  }
-
-  &:first-child::after {
-    height: 100%;
-    top: 50%;
-    background: #eb6952;
-    border-radius: 50px 0 0 0;
-  }
-
   &:nth-child(2) {
-    background: #a455c9;
-  }
+    background: #f59518;
 
-  &:nth-child(2)::after {
-    height: 100%;
-    top: 50%;
-    background: #6314c9;
+    &::after {
+      height: 100%;
+      top: 50%;
+      background: #eb6952;
+      border-radius: 50px 0 0 0;
+    }
   }
 
   &:nth-child(3) {
-    background: #2c2666;
+    background: #a455c9;
+
+    &::after {
+      height: 100%;
+      top: 50%;
+      background: #6314c9;
+    }
   }
 
-  &:nth-child(3)::after {
-    height: 50%;
-    top: 0;
-    background: #5a558a;
-    border-radius: 0 0 50px 0;
+  &:nth-child(4) {
+    background: #2c2666;
+
+    &::after {
+      height: 50%;
+      top: 0;
+      background: #5a558a;
+      border-radius: 0 0 50px 0;
+    }
   }
 
   &__icon {
