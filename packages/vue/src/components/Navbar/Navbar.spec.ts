@@ -7,16 +7,25 @@ import userEvent from "@testing-library/user-event";
 import App from "@/App.vue";
 import Daily from "@/views/Daily.vue";
 import Home from "@/views/Home.vue";
-import VueRouter from "vue-router";
+import store from "@/store";
+import { createRouter, createWebHistory, RouteRecordRaw } from "vue-router";
 
-const routes = [
-  { path: "/", component: Home },
-  { path: "/daily", component: Daily },
-  { path: "*", redirect: "/" },
-];
+const router = createRouter({
+  history: createWebHistory(),
+  routes: [
+    { path: "/", component: Home },
+    { path: "/daily", component: Daily },
+  ],
+});
+
 test("full app rendering/navigating", async () => {
   // Notice how we pass a `routes` object to our render function.
-  render(App, { routes });
+  render(App, { global: { plugins: [router, store] } });
+  await router.isReady();
+
+  await waitForElementToBeRemoved(() => screen.getByText(/loading/i), {
+    timeout: 7000,
+  });
 
   //render home view
   expect(screen.getByText(/weather forecast/i)).toBeInTheDocument();

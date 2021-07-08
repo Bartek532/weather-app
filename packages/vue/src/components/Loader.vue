@@ -1,5 +1,6 @@
 <template>
   <div class="loader">
+    <span class="sr-only">loading</span>
     <div class="loader__ring">
       <div></div>
       <div></div>
