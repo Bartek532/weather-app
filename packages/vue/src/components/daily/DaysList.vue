@@ -6,8 +6,8 @@
       :icon="item.weather[0].icon"
       :day="getListOfDays()[index]"
       :iconDescription="item.weather[0].icon"
-      :index="index"
-      :activeDayIndex="activeDayIndex"
+      @click="$emit('change-active-day', index)"
+      :class="{ 'day--active': activeDayIndex === index }"
     />
   </ul>
 </template>

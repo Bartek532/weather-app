@@ -37,11 +37,11 @@ test("should update daily weather when day is selected", async () => {
 
   expect(screen.getByRole("button", { name: /tuesday/i })).toBeInTheDocument();
   expect(screen.getByRole("button", { name: /tuesday/i })).toHaveClass(
-    "day__btn--active"
+    "day--active"
   );
 
   const fridayBtn = screen.getByRole("button", { name: /friday/i });
   await fireEvent.click(fridayBtn);
   
-  expect(wrapper.emitted()['change-active-day']).toEqual([4]);
+  expect(wrapper.emitted()['change-active-day'][0]).toEqual([3]);
 });
