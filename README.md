@@ -27,7 +27,7 @@ This is weather app. But it isn't normal weather app. It includes daily and hour
 | [SCSS](https://sass-lang.com)                                                          | CSS with superpowers                 |
 | [Typescript](https://www.typescriptlang.org/)                                          | Javascript superset language         |
 | [React](https://reactjs.org/)                                                          | Library for building user interfaces |
-| [Context API](https://reactjs.org/docs/context.html)                                   | Alternative to React Redux           |
+| [Context API](https://reactjs.org/docs/context.html)                                   | React structure that enables to share data with multiple components           |
 | [React Router](https://reactrouter.com)                                                | Declarative routing for React        |
 | [Jest](https://jestjs.io)                                                              | Javascript Testing Framework         |
 | [React Testing Library](https://testing-library.com/docs/react-testing-library/intro/) | Useful for testing React components  |
